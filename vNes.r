@@ -3,6 +3,7 @@ Rebol [
   Date: `date "+%e-%b-%Y"`
   Author: "Luc Sieben"
   needs: [%project-manager.r]
+  Purpose: "The main script for the vNES programming language compiler"
 ]
 secure [
         net quit
@@ -12,9 +13,12 @@ errors: import %errors.r
 lexer: import %lexer.r
 print "vNES Compiler v1.0.0 by Luc Sieben.^/"
 
-if not exists? %std.lib [
+either not exists? %std.lib [
   print "Standard library not found."
   quit
+][
+  ;print "Parsing standard library..."
+  ;print generate-symbols-list to-string decompress read %std.lib
 ]
 
 either none? system/options/args [  print {
@@ -28,7 +32,7 @@ Usage: vNES <project file> <output rom>}
   project: collect-project-sources project
 
   foreach file project/source-files [
-    append project/symbols lexer/generate-symbols-list file
+    append project/symbols lexer/generate-symbols-list read/string file
   ]
 ]
 halt

@@ -2,13 +2,12 @@ Rebol [
   Title: "Project manager module for vNES"
   Date: `date "+%e-%b-%Y"`
   Author: "Luc Sieben"
-  Description: "This module manages project files (.vnesproj) and gathers dependencies for a project"
+  Purpose: "This module manages project files (.vnesproj) and gathers dependencies for a project"
   Type: module
   Exports: [get-project validate-project collect-project-sources]
 ]
 
 errors: import %errors.r
-
 
 get-project: func ["Get a project object from a project definition"
 

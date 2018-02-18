@@ -2,7 +2,7 @@ Rebol [
   Title: "Build script to build (compress) the vNES standard library"
   Date: `date "+%e-%b-%Y"`
   Author: "Luc Sieben"
-  Description: "Builds the vNES standard library"
+  Purpose: "Builds the vNES standard library"
 ]
 
 if not exists? %stdlib/ [
