@@ -12,6 +12,11 @@ errors: import %errors.r
 lexer: import %lexer.r
 print "vNES Compiler v1.0.0 by Luc Sieben.^/"
 
+if not exists? %std.lib [
+  print "Standard library not found."
+  quit
+]
+
 either none? system/options/args [  print {
 No project file specified for compilation.
 Usage: vNES <project file> <output rom>}
