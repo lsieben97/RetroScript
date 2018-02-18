@@ -21,6 +21,9 @@ A high level programming language to program NES games.
 rebol.exe vNes.r ./testproject/testproject.vnesproj
 ```
 
+## Documentation
+Documentation is located in the [docs](/docs) folder
+
 ## Built With
 
 * [Rebol v3](http://www.rebol.com)
