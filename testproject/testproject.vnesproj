@@ -1,0 +1,4 @@
+name: test project
+source-dirs: screens/,sounds/,music/,sprites/
+start-screen: splash
+project-dir: /C/Users/Luc/Documents/rebol/vNES/testproject
