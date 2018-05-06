@@ -1,0 +1,17 @@
+# comment
+
+DEF FUNCTIONAL ENTITY: TEST
+
+  ### Adds two numbers together
+  ### PARAM: arg1: first argument
+  ### PARAM: arg2: second argument
+  ### RETURNS: the result of the two arguments combined
+  DEF FUNCTION: Add(NUMBER: arg1, NUMBER: arg2): NUMBER
+    RETURN arg1 + arg2
+  END
+
+  ### Test function.
+  DEF FUNCTION: Test()
+    DEF test: Add(3,6)
+  END
+END
