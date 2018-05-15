@@ -14,6 +14,18 @@ public class AsmInstruction {
     public AsmInstruction(Opcode opcode, AddressingMode addressingMode) {
         this.opcode = opcode;
         this.addressingMode = addressingMode;
-        this.argument = new byte[]{};
+        this.argument = new byte[] {};
+    }
+
+    public Opcode getOpcode() {
+        return opcode;
+    }
+
+    public AddressingMode getAddressingMode() {
+        return addressingMode;
+    }
+
+    public byte[] getArgument() {
+        return argument;
     }
 }

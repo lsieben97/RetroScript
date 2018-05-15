@@ -10,7 +10,12 @@ public class Assembler {
         return instructions;
     }
 
-    public static void add(AsmInstruction instruction) {
+    /**
+     * Add an instruction to the program memory.
+     * @param instruction The instruction to add.
+     */
+    public static byte[] add(AsmInstruction instruction) {
         instructions.add(instruction);
+        return MemoryManager.addInstruction(instruction);
     }
 }
