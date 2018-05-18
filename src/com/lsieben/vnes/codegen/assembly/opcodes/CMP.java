@@ -7,20 +7,20 @@ import com.lsieben.vnes.codegen.assembly.Opcode;
 
 import static com.lsieben.vnes.codegen.assembly.Util.tb;
 
-public class LDA extends Opcode {
+public class CMP extends Opcode {
     @Override
     protected void initialize() {
-        this.instructionMap.put(AddressingMode.Immediate,        tb("A9"));
-        this.instructionMap.put(AddressingMode.ZeroPage,         tb("A5"));
-        this.instructionMap.put(AddressingMode.ZeroPageIndexedX, tb("B5"));
-        this.instructionMap.put(AddressingMode.Absolute,         tb("AD"));
-        this.instructionMap.put(AddressingMode.AbsoluteIndexedX, tb("BD"));
-        this.instructionMap.put(AddressingMode.AbsoluteIndexedY, tb("B9"));
-        this.instructionMap.put(AddressingMode.IndirectX,        tb("A1"));
-        this.instructionMap.put(AddressingMode.IndirectY,        tb("B1"));
+        this.instructionMap.put(AddressingMode.Immediate,        tb("C9"));
+        this.instructionMap.put(AddressingMode.ZeroPage,         tb("C5"));
+        this.instructionMap.put(AddressingMode.ZeroPageIndexedX, tb("D5"));
+        this.instructionMap.put(AddressingMode.Absolute,         tb("CD"));
+        this.instructionMap.put(AddressingMode.AbsoluteIndexedX, tb("DD"));
+        this.instructionMap.put(AddressingMode.AbsoluteIndexedY, tb("D9"));
+        this.instructionMap.put(AddressingMode.IndirectX,        tb("C1"));
+        this.instructionMap.put(AddressingMode.IndirectY,        tb("D1"));
 
-        this.mnemonic = "LDA";
-        this.description = "Load Accumulator";
+        this.mnemonic = "CMP";
+        this.description = "Compare Memory and Accumulator";
 
         this.cycleMap.put(AddressingMode.Immediate,        new CycleMeasurement(2, CycleMeasureMode.Absolute));
         this.cycleMap.put(AddressingMode.ZeroPage,         new CycleMeasurement(3, CycleMeasureMode.Absolute));

@@ -5,6 +5,7 @@ public enum AddressingMode {
     Absolute,
     ZeroPage,
     Implied,
+    Indirect,
     IndirectX,
     AbsoluteIndexedX,
     AbsoluteIndexedY,
