@@ -13,10 +13,15 @@ A high level programming language to program NES games.
 - [ ] Backend
     - [ ] Parsing
         - [ ] Visitors
-        - [ ] Implementors
+        
     - [ ] Code Generation
-        - [ ] Assembly opcodes
+        - [ ] Implementors
+        - [x] Assembly opcodes
         - [ ] Memory manager
+            - [x] Program memory
+            - [ ] Ram memory
+            - [ ] PPU memory
+            - [ ] APU momory
         - [ ] Rom file generation
     - [ ] NES features
         - [ ] PPU support
@@ -33,6 +38,15 @@ A high level programming language to program NES games.
         - [ ] Sound
             - [ ] `.mid`/`.midi`
             - [ ] custom format (optional)
+        - [ ] Runtime
+            - [ ] `.asm`
+     - [ ] vNES runtime
+        - [ ] Design runtime
+        - [ ] Implement runtime
+        - [ ] Custom runtime configuration through `runtime.json` file in project root.
+        - [ ] Features
+            - [ ] basic runtime (needs to be designed first)
+            - [ ] drawing runtime (like the winforms `Graphics` class in .Net)
 - [ ] Standard library
     - [ ] NES features
         - [ ] PPU support
