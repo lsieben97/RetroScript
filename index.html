@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>vNES Programming language</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/codeStyle.css" />
+    <script src="js/plugins/prism.js"></script>
+    <script src="js/home.js"></script>
+</head>
+<body>
+    <div class="header">
+      <img src="img/logo.png" width="500" height="125"/>
+      <a href="https://github.com/lsieben97/vnes"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+    </div>
+    <div class="demo row">
+      <div class="column">
+        <h2 style="color: white">vNES</h2>
+        <pre class="code-example" id="demo-code"><code class="language-vnes code-example">
+USE VNES.SCREEN_UTILS
+DEF SCREEN: MainScreen
+  onLoad: OnLoad()
+
+  DEF FUNCTION OnLoad()
+    DEF color: COLOR
+    color.r = 255
+    color.g = 0
+    color.b = 0
+    SCREEN_UTILS.Clear(color)
+  END
+END
+        </code></pre>
+      </div>
+      <div class="column">
+        <h2 style="color: white">Assembly</h2>
+        <pre class="code-example" id="demo-code"><code class="language-asm6502 code-example">
+; TODO: make this code acctualy do what the vNES example does...
+sei 
+cld 
+ldx #$40
+stx $4017 
+ldx #$ff
+txs 
+inx 
+stx $2000 
+stx $2001
+stx $4010 
+
+
+bit $2002
+; etc (You get the idea...)
+        </code></pre>
+      </div>
+    </div>
+    <h1 class="section-header">Features</h1>
+    <div class="row">
+      <div class="column">
+        <h3>Modular structure</h3>
+        <svg style="width:100px;height:100px;" viewBox="0 0 24 24">
+          <path fill="#505050" d="M16,5V11H21V5M10,11H15V5H10M16,18H21V12H16M10,18H15V12H10M4,18H9V12H4M4,11H9V5H4V11Z" />
+      </svg>
+      <span style="display: block">
+          Structure your project into modules.<br />
+          Seperate functionality for each screen of your game.</span>
+      </div>
+      <div class="column">
+          <h3>Retro syntax</h3>
+          <svg style="width:100px;height:100px;" viewBox="0 0 24 24">
+            <path fill="#505050" d="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z" />
+        </svg>
+        <span style="display: block">
+            vNES code looks not from this time period but it's full of highlevel functions.<br />
+          It's syntax is inspired by Python, Visual Basic and Lua.</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="column">
+          <h3>Compile to ROM or library</h3>
+          <svg height="100px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="100px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="#505050" d="M32,255.4C32,320.6,81.5,368,142.7,368h226.6c61.2,0,110.7-47.4,110.7-112.6S430.5,144,369.3,144H142.7  C81.5,144,32,190.3,32,255.4z M404.8,233.3c10.7,0,19.4,8.5,19.4,19s-8.7,19-19.4,19s-19.4-8.5-19.4-19S394.1,233.3,404.8,233.3z   M362.3,191.8c10.8,0,19.5,8.5,19.5,19s-8.7,19-19.5,19c-10.7,0-19.4-8.5-19.4-19S351.6,191.8,362.3,191.8z M362.3,274.9  c10.8,0,19.5,8.4,19.5,19c0,10.5-8.7,18.9-19.5,18.9c-10.7,0-19.4-8.5-19.4-18.9C343,283.3,351.6,274.9,362.3,274.9z M319.8,233.3  c10.8,0,19.5,8.5,19.5,19s-8.7,19-19.5,19c-10.7,0-19.4-8.5-19.4-19S309.1,233.3,319.8,233.3z M88,245.3c0-2.7,1.8-5.3,4.3-5.3h1.1  H128v-38.2v-0.6c0-2.8,2.1-5.2,4.8-5.2h21.9c2.7,0,5.4,2.4,5.4,5.2v0.5V240h37.2h0.6c2.7,0,5.2,2.5,5.2,5.3V267c0,2.9-2.5,5-5.2,5  h-0.5H160v38.6v0.5c0,2.8-2.7,4.9-5.4,4.9h-21.9c-2.6,0-4.8-1.9-4.8-4.5v-1.1V272H93.1h-0.5c-2.7,0-4.6-2.1-4.6-5V245.3z"/></svg>
+          <svg height="75px" viewBox="0 0 1792 1792" width="75px" xmlns="http://www.w3.org/2000/svg"><path fill="#505050" d="M1596 380q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280zm-928-896q8-11 21-12.5t24 6.5l51 38q11 8 12.5 21t-6.5 24l-182 243 182 243q8 11 6.5 24t-12.5 21l-51 38q-11 8-24 6.5t-21-12.5l-226-301q-14-19 0-38zm802 301q14 19 0 38l-226 301q-8 11-21 12.5t-24-6.5l-51-38q-11-8-12.5-21t6.5-24l182-243-182-243q-8-11-6.5-24t12.5-21l51-38q11-8 24-6.5t21 12.5zm-620 461q-13-2-20.5-13t-5.5-24l138-831q2-13 13-20.5t24-5.5l63 10q13 2 20.5 13t5.5 24l-138 831q-2 13-13 20.5t-24 5.5z"/></svg>
+        <span style="display: block">
+            Compile to a .NES file to run directly on your favorite emulator.<br />
+            Or compile to a library file which you can include in other projects.</span>
+        </div>
+        <div class="column">
+            <h3>Various file formats supported</h3>
+            <svg style="width:65px;height:65px;" viewBox="0 0 24 24">
+              <path fill="#505050" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M6,20H15L18,20V12L14,16L12,14L6,20M8,9A2,2 0 0,0 6,11A2,2 0 0,0 8,13A2,2 0 0,0 10,11A2,2 0 0,0 8,9Z" />
+          </svg>
+          <svg style="width:65px;height:65px;" viewBox="0 0 24 24">
+              <path fill="#505050" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M9,16A2,2 0 0,0 7,18A2,2 0 0,0 9,20A2,2 0 0,0 11,18V13H14V11H10V16.27C9.71,16.1 9.36,16 9,16Z" />
+          </svg>
+          
+          <span style="display: block">
+            Load image assest from <code>png</code>, <code>bmp</code> and <code>jpg</code> files<br />
+            Load music from <code>midi</code> files</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="column">
+            <h3>Mapper support</h3>
+            <svg style="width:100px;height:100px;" viewBox="0 0 24 24">
+              <path fill="#505050" d="M15,19L9,16.89V5L15,7.11M20.5,3C20.44,3 20.39,3 20.34,3L15,5.1L9,3L3.36,4.9C3.15,4.97 3,5.15 3,5.38V20.5A0.5,0.5 0 0,0 3.5,21C3.55,21 3.61,21 3.66,20.97L9,18.9L15,21L20.64,19.1C20.85,19 21,18.85 21,18.62V3.5A0.5,0.5 0 0,0 20.5,3Z" />
+          </svg>
+          <span style="display: block">
+              Over 20 mappers supported by default.<br />
+              Define your own custom mapper through a <code>mapper.json</code> file in the project root.</span>
+          </div>
+          <div class="column">
+              <h3>vNES Runtime</h3>
+              <svg style="width:100px;height:100px;" viewBox="0 0 24 24">
+                <path fill="#505050" d="M15.9,18.45C17.25,18.45 18.35,17.35 18.35,16C18.35,14.65 17.25,13.55 15.9,13.55C14.54,13.55 13.45,14.65 13.45,16C13.45,17.35 14.54,18.45 15.9,18.45M21.1,16.68L22.58,17.84C22.71,17.95 22.75,18.13 22.66,18.29L21.26,20.71C21.17,20.86 21,20.92 20.83,20.86L19.09,20.16C18.73,20.44 18.33,20.67 17.91,20.85L17.64,22.7C17.62,22.87 17.47,23 17.3,23H14.5C14.32,23 14.18,22.87 14.15,22.7L13.89,20.85C13.46,20.67 13.07,20.44 12.71,20.16L10.96,20.86C10.81,20.92 10.62,20.86 10.54,20.71L9.14,18.29C9.05,18.13 9.09,17.95 9.22,17.84L10.7,16.68L10.65,16L10.7,15.31L9.22,14.16C9.09,14.05 9.05,13.86 9.14,13.71L10.54,11.29C10.62,11.13 10.81,11.07 10.96,11.13L12.71,11.84C13.07,11.56 13.46,11.32 13.89,11.15L14.15,9.29C14.18,9.13 14.32,9 14.5,9H17.3C17.47,9 17.62,9.13 17.64,9.29L17.91,11.15C18.33,11.32 18.73,11.56 19.09,11.84L20.83,11.13C21,11.07 21.17,11.13 21.26,11.29L22.66,13.71C22.75,13.86 22.71,14.05 22.58,14.16L21.1,15.31L21.15,16L21.1,16.68M6.69,8.07C7.56,8.07 8.26,7.37 8.26,6.5C8.26,5.63 7.56,4.92 6.69,4.92A1.58,1.58 0 0,0 5.11,6.5C5.11,7.37 5.82,8.07 6.69,8.07M10.03,6.94L11,7.68C11.07,7.75 11.09,7.87 11.03,7.97L10.13,9.53C10.08,9.63 9.96,9.67 9.86,9.63L8.74,9.18L8,9.62L7.81,10.81C7.79,10.92 7.7,11 7.59,11H5.79C5.67,11 5.58,10.92 5.56,10.81L5.4,9.62L4.64,9.18L3.5,9.63C3.41,9.67 3.3,9.63 3.24,9.53L2.34,7.97C2.28,7.87 2.31,7.75 2.39,7.68L3.34,6.94L3.31,6.5L3.34,6.06L2.39,5.32C2.31,5.25 2.28,5.13 2.34,5.03L3.24,3.47C3.3,3.37 3.41,3.33 3.5,3.37L4.63,3.82L5.4,3.38L5.56,2.19C5.58,2.08 5.67,2 5.79,2H7.59C7.7,2 7.79,2.08 7.81,2.19L8,3.38L8.74,3.82L9.86,3.37C9.96,3.33 10.08,3.37 10.13,3.47L11.03,5.03C11.09,5.13 11.07,5.25 11,5.32L10.03,6.06L10.06,6.5L10.03,6.94Z" />
+            </svg>
+            <span style="display: block">
+              Reduce your byte count by using the vNES Runtime.<br />
+              Define your own Runtime functions through <code>asm</code> files and a <code>runtime.json</code> in your project root.</span>
+            </div>
+          </div>
+        </div>
+        <!--<h1 class="section-header">Interested?</h1>
+        Click <a href="#">here</a> to learn how the demo code above works.-->
+<div class="footer">&copy; 2018 - <a style="color: white;" href="https://github.com/lsieben97">Luc Sieben</a></div>
+</body>
+</html>
+
