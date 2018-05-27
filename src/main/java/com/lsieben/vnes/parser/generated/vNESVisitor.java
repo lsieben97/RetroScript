@@ -1,4 +1,4 @@
-// Generated from C:/Users/Luc/workspace/vNES/src/com/lsieben/vnes/parser\vNES.g4 by ANTLR 4.7
+// Generated from C:/Users/Luc/workspace/vNES/src/main/java/com/lsieben/vnes/parser\vNES.g4 by ANTLR 4.7
 package com.lsieben.vnes.parser.generated;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -41,11 +41,11 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDatatype(vNESParser.DatatypeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link vNESParser#program}.
+	 * Visit a parse tree produced by {@link vNESParser#sourceFile}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProgram(vNESParser.ProgramContext ctx);
+	T visitSourceFile(vNESParser.SourceFileContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link vNESParser#module}.
 	 * @param ctx the parse tree

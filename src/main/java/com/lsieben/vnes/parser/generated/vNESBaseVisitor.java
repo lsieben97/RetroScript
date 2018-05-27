@@ -1,4 +1,4 @@
-// Generated from C:/Users/Luc/workspace/vNES/src/com/lsieben/vnes/parser\vNES.g4 by ANTLR 4.7
+// Generated from C:/Users/Luc/workspace/vNES/src/main/java/com/lsieben/vnes/parser\vNES.g4 by ANTLR 4.7
 package com.lsieben.vnes.parser.generated;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -52,7 +52,7 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProgram(vNESParser.ProgramContext ctx) { return visitChildren(ctx); }
+	@Override public T visitSourceFile(vNESParser.SourceFileContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

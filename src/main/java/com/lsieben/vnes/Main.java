@@ -1,7 +1,7 @@
 package com.lsieben.vnes;
 
 import com.google.gson.Gson;
-import com.lsieben.vnes.lang.constructs.Program;
+import com.lsieben.vnes.lang.constructs.SourceFile;
 import com.lsieben.vnes.logger.Logger;
 import com.lsieben.vnes.models.VnesProject;
 import com.lsieben.vnes.parser.Parser;
@@ -41,12 +41,12 @@ public class Main {
                     if (project != null) {
                         Logger.writeInfo("Starting Library compilation for project '" + project.getName() + "'");
                         // compile library...
-                        List<Program> codeBase = new ArrayList<>();
+                        List<SourceFile> codeBase = new ArrayList<>();
                         List<File> sourcefiles = ProjectManager.getSourceFilesForProject(project);
                         for( File file : sourcefiles) {
                             codeBase.add(Parser.parseFile(file));
                         }
-                        // todo validate id's in each program
+                        // todo validate id's in each sourceFile
 
                         // Write codebase to a file.
                         String codebaseString = new Gson().toJson(codeBase.toArray());

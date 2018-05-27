@@ -61,7 +61,7 @@ ID
 
 
 /****************** PARSER  ******************/
-program: (module+ | entity+ | useStatement+)+;
+sourceFile: (module+ | entity+ | useStatement+)*;
 
 module: moduleDefinition entity* endClause;
 

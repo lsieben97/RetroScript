@@ -1,4 +1,4 @@
-// Generated from C:/Users/Luc/workspace/vNES/src/com/lsieben/vnes/parser\vNES.g4 by ANTLR 4.7
+// Generated from C:/Users/Luc/workspace/vNES/src/main/java/com/lsieben/vnes/parser\vNES.g4 by ANTLR 4.7
 package com.lsieben.vnes.parser.generated;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

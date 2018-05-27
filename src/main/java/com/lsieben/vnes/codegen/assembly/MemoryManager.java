@@ -7,7 +7,7 @@ import java.util.List;
 import static com.lsieben.vnes.codegen.assembly.Util.getSizeForAddressingMode;
 
 public class MemoryManager {
-    // todo define memory sections eg. program, ppu etc...
+    // todo define memory sections eg. sourceFile, ppu etc...
     private static List<Byte> programMemory = new ArrayList<>();
     private static int programPointer = 0;
 
