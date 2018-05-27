@@ -13,7 +13,7 @@ public class Assembler {
     }
 
     /**
-     * Add an instruction to the program memory.
+     * Add an instruction to the sourceFile memory.
      *
      * @param instruction The instruction to add.
      */

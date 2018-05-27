@@ -1,8 +1,8 @@
 # Entities
 Entities are the main building block of the vNES programming language.
 An entity is made of the following things:
-* Mandetory properies. without these your program will not compile.
-* Optional properties. These are not mandetory for program compilation.
+* Mandetory properies. without these your sourceFile will not compile.
+* Optional properties. These are not mandetory for sourceFile compilation.
 
 
 ## Entity types
