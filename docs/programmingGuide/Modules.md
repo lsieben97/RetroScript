@@ -7,7 +7,21 @@ vNES uses this feature in it's standard library to separate the internal entitie
 Defining a module is straight forward:
 ```
 DEF MODULE: MODULE_NAME
-    # Multiple entities can go here
+    # Multiple entities and functions can go here
 END        
 ```
-You can redefine the same module in separate files. (the compiler bundles them anyway)
+You can redefine the same module in separate files.
+
+## Defining a native module
+You can define a native module to allow the `[NativeFunction(target:<target_name>)]` [attribute]() on functions defined in the module.  
+This is used to call functions from a [native library]().
+```
+DEF NATIVE MODULE: MODULE_NAME
+    # Multiple entities and functions can go here as well as NATIVE functions.    
+END
+```
+
+## Using a module from another file.
+```
+USE <module name>
+```

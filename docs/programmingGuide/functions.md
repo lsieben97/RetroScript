@@ -1,21 +1,33 @@
 # Functions
-A function entity is a special type of entity because it's the only entity type that allows vNES code to be directly entered in the entity body:
-````
-# inside a data or functional entity
-DEF FUNCTION: Add(NUMBER: arg1, NUMBER: arg2): NUMBER
-    RETURN arg1 + arg2
-END FUNCTION
-````
-## NATIVE FUCNTION: a special type of function entity
-With a native function it's possible to include inline 6502 assembly code:
-````
-# inside a functional entity
-DEF NATIVE FUNCTION: NativeExample
-    # regular vNES code...
-    [-
-        # 6502 assembly code goes here.
-    -]
-````
-### Native functions and memory managment
-When using native code it's usefull to use the `-memstats` option when compiling  as it shows what memory regions vNES uses for it's code generation. using an allready used memory slot may lead to unexpected behaviour of your game.
+A function quite self explenatory
+## Defining a function
 
+### Defining a function with a return type
+````
+# inside a data entity or module
+DEF FUNCTION: Add(arg1: NUMBER, arg2: NUMBER): NUMBER
+    RETURN arg1 + arg2
+END
+````
+### Defining a function without a return type
+````
+# inside a data entity or module
+DEF FUNCTION: DoSomething(arg1: NUMBER, arg2: NUMBER): NONE
+    # do something...
+END
+````
+
+> This is the only time NONE can be used as vNES doesn't have a null like datatype.
+## Calling a function
+
+### Calling a function in the current entity
+You can call a function directly by using the function name:
+```
+FunctionName(argument1, argument2)
+```
+
+### Calling a function in another entity or module
+You can call a function directly by using the function name:
+```
+<entity/module name>.FunctionName(argument1, argument2)
+```
