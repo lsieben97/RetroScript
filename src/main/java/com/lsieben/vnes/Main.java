@@ -24,55 +24,18 @@ public class Main {
         }
 
         if (commandLine.hasOption("compile")) {
-            if (commandLine.hasOption("output") || commandLine.hasOption("library")) {
-                String input = commandLine.getOptionValue("compile");
-                if(commandLine.hasOption("output")) {
-                    String output = commandLine.getOptionValue("output");
-                    // compile to rom
-                    VnesProject project = ProjectManager.makeProjectFromDefinition(input);
-                    if (project != null) {
-                        Logger.writeInfo("Starting ROM compilation for project '" + project.getName() + "'");
-                        // compile rom...
-                    }
-                } else {
-                    // compile to library
-                    String library = commandLine.getOptionValue("library");
-                    VnesProject project = ProjectManager.makeProjectFromDefinition(input);
-                    if (project != null) {
-                        Logger.writeInfo("Starting Library compilation for project '" + project.getName() + "'");
-                        // compile library...
-                        List<SourceFile> codeBase = new ArrayList<>();
-                        List<File> sourcefiles = ProjectManager.getSourceFilesForProject(project);
-                        for( File file : sourcefiles) {
-                            codeBase.add(Parser.parseFile(file));
-                        }
-                        // todo validate id's in each sourceFile
-
-                        // Write codebase to a file.
-                        String codebaseString = new Gson().toJson(codeBase.toArray());
-                        
-                    }
-                }
-
-            } else {
-                Logger.writeError("argument 'compile' requires argument 'output' or 'library' to be present");
-            }
+            Compiler.compile(commandLine);
         }
-        //com.lsieben.vnes.compiler.Compiler compiler = new com.lsieben.vnes.compiler.Compiler(args);
-        //compiler.start();
     }
 
+
     private static CommandLine generateCommandLine(
-            final Options options, final String[] commandLineArguments)
-    {
+            final Options options, final String[] commandLineArguments) {
         final CommandLineParser cmdLineParser = new DefaultParser();
         CommandLine commandLine = null;
-        try
-        {
+        try {
             commandLine = cmdLineParser.parse(options, commandLineArguments);
-        }
-        catch (ParseException parseException)
-        {
+        } catch (ParseException parseException) {
             Logger.writeError("Unable to parse command-line arguments "
                     + Arrays.toString(commandLineArguments) + " due to: "
                     + parseException);
@@ -80,8 +43,7 @@ public class Main {
         return commandLine;
     }
 
-    private static Options generateOptions()
-    {
+    private static Options generateOptions() {
         final Option verboseOption = Option.builder("v")
                 .required(false)
                 .hasArg(false)
@@ -98,7 +60,7 @@ public class Main {
                 .required(false)
                 .hasArg(false)
                 .longOpt("memstat")
-                .desc("Prints a memory dump of the NES memory instead of compiling.")
+                .desc("Prints a memory dump of the NES memory after compiling.")
                 .build();
         final Option compileOption = Option.builder("c")
                 .required(false)
@@ -116,7 +78,7 @@ public class Main {
                 .required(false)
                 .longOpt("output")
                 .hasArg(false)
-                .desc("The path to the .nes rom file of library to write to (wil be created if it doen't exists)")
+                .desc("The path to the .nes rom file or library to write to (wil be created if it doen't exists)")
                 .build();
         final Options options = new Options();
         options.addOption(verboseOption);
