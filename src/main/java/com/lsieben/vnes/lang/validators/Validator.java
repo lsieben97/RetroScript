@@ -10,11 +10,11 @@ public abstract class Validator<T extends LanguageConstruct> {
     }
 
     public abstract void implement() throws vNESCompilerException;
-    public abstract void implementChildren();
+    public abstract void implementChildren() throws vNESCompilerException;
 
-    public String getSourcePosition() {
+    public static String getSourcePositionOfConstruct(LanguageConstruct construct) {
         return construct.getContext().getStart().getInputStream().getSourceName() +
-                " at " + String.valueOf(construct.getContext().getStart().getLine()) +
-                " : " + String.valueOf(construct.getContext().getStart().getCharPositionInLine());
+                " at line " + String.valueOf(construct.getContext().getStart().getLine()) +
+                " | column " + String.valueOf(construct.getContext().getStart().getCharPositionInLine());
     }
 }
