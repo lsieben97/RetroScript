@@ -2,8 +2,7 @@ package com.lsieben.vnes.logger;
 
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
-import com.lsieben.vnes.compiler.Compiler;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import com.lsieben.vnes.Compiler;
 
 /**
  * Logger class to write stuff to the console.

@@ -2,6 +2,7 @@ package com.lsieben.vnes;
 
 import com.google.gson.Gson;
 import com.lsieben.vnes.ProjectManager;
+import com.lsieben.vnes.lang.constructs.CodeBase;
 import com.lsieben.vnes.lang.constructs.SourceFile;
 import com.lsieben.vnes.logger.Logger;
 import com.lsieben.vnes.models.VnesProject;
@@ -34,15 +35,17 @@ public class Compiler {
                 if (project != null) {
                     Logger.writeInfo("Starting Library compilation for project '" + project.getName() + "'");
                     // compile library...
-                    List<SourceFile> codeBase = new ArrayList<>();
-                    List<File> sourcefiles = ProjectManager.getSourceFilesForProject(project);
-                    for( File file : sourcefiles) {
-                        codeBase.add(Parser.parseFile(file));
+                    CodeBase codeBase = new CodeBase();
+                    codeBase.setProject(project);
+                    codeBase.setSourceFiles(new ArrayList<>());
+                    List<File> sourceFiles = ProjectManager.getSourceFilesForProject(project);
+                    for( File file : sourceFiles) {
+                        codeBase.getSourceFiles().add(Parser.parseFile(file));
                     }
                     // todo validate id's in each sourceFile
 
                     // Write codebase to a file.
-                    String codebaseString = new Gson().toJson(codeBase.toArray());
+
 
                 }
             }
