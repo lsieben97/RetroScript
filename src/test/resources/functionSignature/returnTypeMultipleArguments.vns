@@ -1,0 +1,1 @@
+DEF FUNCTION: Test(arg1: NUMBER, arg2: NUMBER): NUMBER

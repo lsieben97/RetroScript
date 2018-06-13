@@ -12,11 +12,11 @@ comment
     ;
 
 FunctionalEntityModifier: 'FUNCTIONAL';
-NativeEntityModifier: 'NATIVE';
+NativeModifier: 'NATIVE';
 
 EntityDataType: 'ENTITY';
 
-entityModifier: FunctionalEntityModifier | NativeEntityModifier;
+entityModifier: FunctionalEntityModifier | NativeModifier;
 
 Colon: ':';
 
@@ -52,29 +52,29 @@ StringLiteral: Quotes (( 'a' .. 'z' | 'A' .. 'Z' ) | ( 'a' .. 'z' | 'A' .. 'Z' |
 rest_of_line
  : ~NL* // match any token other than a line break zero or more times
  ;
-datatype: EntityDataType | ID | 'NUMBER' | 'STRING';
+dataType: ID | 'NUMBER' | 'STRING' | 'ENTITY';
 
 Use: 'USE';
 ID
-   : ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '-' | '.')*
+   : ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' | '_')*
    ;
 
 
+
 /****************** PARSER  ******************/
-sourceFile: (module+ | entity+ | useStatement+)*;
+sourceFile: (module+ | useStatement+)*;
 
-module: moduleDefinition entity* endClause;
+module: moduleDefinition (entity | function)* endClause;
 
-moduleDefinition: Define 'MODULE' ID;
+moduleDefinition: Define NativeModifier? 'MODULE' Colon ID;
 
 useStatement: 'USE' ID;
 
 entity: comment* entityDefinition entityBody endClause;
-entityDefinition: Define entityModifier* datatype Colon ID;
+entityDefinition: Define entityModifier* dataType Colon ID;
 
-functionDefinition: comment* Define Function Colon ID functionDefinitionArgumentList Colon datatype;
-functionDefinitionArgumentList: OpenBracket definitionArgumentSpec* CloseBracket;
-definitionArgumentSpec: datatype Colon ID Comma?;
+functionDefinition: comment* Define Function Colon ID OpenBracket definitionArgumentSpec* CloseBracket (Colon dataType)?;
+definitionArgumentSpec: ID Colon dataType Comma?;
 
 endClause: End;
 
@@ -88,23 +88,24 @@ function: functionDefinition functionBody endClause;
 
 entityBody: entityComponent*;
 
-entityComponent: function | property;
+entityComponent: function | propertyDefinition | propertyAssignment;
 
-property: Define propertyModifier? ID Colon datatype assignment?;
+propertyDefinition: Define mandatoryModifier? 'PROPERTY' ID Colon dataType (Equals expression)?;
 
-propertyModifier: 'MANDETORY';
+propertyAssignment: ID '=' expression;
+
+mandatoryModifier: 'MANDATORY';
 
 assignment: Equals expression;
-methodCall: ID OpenBracket argumentSpec* CloseBracket;
+functionCall: ID OpenBracket argumentSpec* CloseBracket;
 
 argumentSpec: expression Comma?;
 
 arithmeticOperator: Addition | Minus | Times | Devision;
 
-expression: atom (expressionComponent)*;
-expressionComponent: arithmeticOperator atom;
-atom: INT | methodCall | StringLiteral | ID;
-add: Addition;
+expression: atom (arithmeticExpressionComponent)*;
+arithmeticExpressionComponent: arithmeticOperator atom;
+atom: INT | functionCall | StringLiteral | ID;
 
 Addition: '+';
 Minus: '-';

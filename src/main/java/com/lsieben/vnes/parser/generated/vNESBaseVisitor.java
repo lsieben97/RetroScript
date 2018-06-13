@@ -45,7 +45,7 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitDatatype(vNESParser.DatatypeContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDataType(vNESParser.DataTypeContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -95,13 +95,6 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitFunctionDefinition(vNESParser.FunctionDefinitionContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitFunctionDefinitionArgumentList(vNESParser.FunctionDefinitionArgumentListContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -164,14 +157,21 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitProperty(vNESParser.PropertyContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPropertyDefinition(vNESParser.PropertyDefinitionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitPropertyModifier(vNESParser.PropertyModifierContext ctx) { return visitChildren(ctx); }
+	@Override public T visitPropertyAssignment(vNESParser.PropertyAssignmentContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitMandatoryModifier(vNESParser.MandatoryModifierContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -185,7 +185,7 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitMethodCall(vNESParser.MethodCallContext ctx) { return visitChildren(ctx); }
+	@Override public T visitFunctionCall(vNESParser.FunctionCallContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -213,7 +213,7 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitExpressionComponent(vNESParser.ExpressionComponentContext ctx) { return visitChildren(ctx); }
+	@Override public T visitArithmeticExpressionComponent(vNESParser.ArithmeticExpressionComponentContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -221,11 +221,4 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitAtom(vNESParser.AtomContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitAdd(vNESParser.AddContext ctx) { return visitChildren(ctx); }
 }

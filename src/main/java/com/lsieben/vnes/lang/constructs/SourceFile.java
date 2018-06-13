@@ -10,7 +10,6 @@ public class SourceFile extends LanguageConstruct {
     }
 
     private List<vNESModule> modules;
-    private List<Entity> entities;
     private List<UsingStatement> usingStatements;
 
 
@@ -22,20 +21,8 @@ public class SourceFile extends LanguageConstruct {
         this.modules = modules;
     }
 
-    public List<Entity> getEntities() {
-        return entities;
-    }
-
-    public void setEntities(List<Entity> entities) {
-        this.entities = entities;
-    }
-
     public boolean hasModules() {
         return this.modules != null;
-    }
-
-    public boolean hasEntities() {
-        return this.entities != null;
     }
 
     public List<UsingStatement> getUsingStatements() {

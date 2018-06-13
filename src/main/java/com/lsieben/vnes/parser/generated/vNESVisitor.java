@@ -35,11 +35,11 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRest_of_line(vNESParser.Rest_of_lineContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link vNESParser#datatype}.
+	 * Visit a parse tree produced by {@link vNESParser#dataType}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDatatype(vNESParser.DatatypeContext ctx);
+	T visitDataType(vNESParser.DataTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link vNESParser#sourceFile}.
 	 * @param ctx the parse tree
@@ -82,12 +82,6 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunctionDefinition(vNESParser.FunctionDefinitionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link vNESParser#functionDefinitionArgumentList}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFunctionDefinitionArgumentList(vNESParser.FunctionDefinitionArgumentListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link vNESParser#definitionArgumentSpec}.
 	 * @param ctx the parse tree
@@ -137,17 +131,23 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitEntityComponent(vNESParser.EntityComponentContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link vNESParser#property}.
+	 * Visit a parse tree produced by {@link vNESParser#propertyDefinition}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitProperty(vNESParser.PropertyContext ctx);
+	T visitPropertyDefinition(vNESParser.PropertyDefinitionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link vNESParser#propertyModifier}.
+	 * Visit a parse tree produced by {@link vNESParser#propertyAssignment}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitPropertyModifier(vNESParser.PropertyModifierContext ctx);
+	T visitPropertyAssignment(vNESParser.PropertyAssignmentContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link vNESParser#mandatoryModifier}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMandatoryModifier(vNESParser.MandatoryModifierContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link vNESParser#assignment}.
 	 * @param ctx the parse tree
@@ -155,11 +155,11 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssignment(vNESParser.AssignmentContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link vNESParser#methodCall}.
+	 * Visit a parse tree produced by {@link vNESParser#functionCall}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitMethodCall(vNESParser.MethodCallContext ctx);
+	T visitFunctionCall(vNESParser.FunctionCallContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link vNESParser#argumentSpec}.
 	 * @param ctx the parse tree
@@ -179,21 +179,15 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpression(vNESParser.ExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link vNESParser#expressionComponent}.
+	 * Visit a parse tree produced by {@link vNESParser#arithmeticExpressionComponent}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpressionComponent(vNESParser.ExpressionComponentContext ctx);
+	T visitArithmeticExpressionComponent(vNESParser.ArithmeticExpressionComponentContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link vNESParser#atom}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitAtom(vNESParser.AtomContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link vNESParser#add}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAdd(vNESParser.AddContext ctx);
 }

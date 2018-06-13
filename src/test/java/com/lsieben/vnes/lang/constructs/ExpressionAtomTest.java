@@ -1,0 +1,55 @@
+package com.lsieben.vnes.lang.constructs;
+
+import com.lsieben.vnes.lang.visitors.ExpressionAtomVisitor;
+import com.lsieben.vnes.parser.generated.vNESParser;
+import com.lsieben.vnes.test_utils.TestUtils;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ExpressionAtomTest {
+
+    @Test
+    void ID() {
+        String code = TestUtils.getFileFromResource("/expressionAtom/id.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
+        assertNotNull(atom, "Expression atom was not recognized by parser");
+        assertEquals(atom.getType().getName(), "ID", "Expression atom does not have ID as type.");
+        assertEquals(atom.getId(), "Test", "Expression atom does not have Test as value");
+    }
+
+    @Test
+    void NUMBER() {
+        String code = TestUtils.getFileFromResource("/expressionAtom/number.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
+        assertNotNull(atom, "Expression atom was not recognized by parser");
+        assertEquals(atom.getType().getName(), "NUMBER", "Expression atom does not have NUMBER as type.");
+        assertEquals(atom.getInteger(), 3, "Expression atom does not have 3 as value");
+    }
+
+    @Test
+    void STRING() {
+        String code = TestUtils.getFileFromResource("/expressionAtom/string.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
+        assertNotNull(atom, "Expression atom was not recognized by parser");
+        assertEquals(atom.getType().getName(), "STRING", "Expression atom does not have STRING as type.");
+        assertEquals(atom.getString(), "Test", "Expression atom does not have Test as value");
+    }
+
+    @Test
+    void FUNCTION() {
+        String code = TestUtils.getFileFromResource("/expressionAtom/function.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
+        assertNotNull(atom, "Expression atom was not recognized by parser");
+        assertEquals(atom.getType().getName(), "FUNCTION", "Expression atom does not have FUNCTION as type.");
+        assertNotNull(atom.getFunctionCall(), "Expression atom does not have a method call.");
+    }
+}

@@ -7,6 +7,8 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 /**
  * Utils for testing.
  *
@@ -40,12 +42,10 @@ public class TestUtils {
     public static String getFileFromResource(String fileName) {
 
         String result = "";
-
-        ClassLoader classLoader = TestUtils.class.getClass().getClassLoader();
         try {
             result = IOUtils.resourceToString(fileName, null);
         } catch (IOException e) {
-            e.printStackTrace();
+            fail("Test Resource not found");
         }
 
         return result;

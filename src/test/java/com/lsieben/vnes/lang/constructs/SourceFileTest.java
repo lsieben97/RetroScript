@@ -16,7 +16,18 @@ class SourceFileTest {
 
         SourceFile sourceFile = new SourceFileVisitor().visitSourceFile(parser.sourceFile());
         assertNotNull(sourceFile, "SourceFile was not recognized by parser");
-        assertNotNull(sourceFile.getModules(), "SourceFile does not have module");
+        assertEquals(sourceFile.getModules().size(), 1, "SourceFile does not have module");
+
+    }
+
+    @Test
+    void programWithUsingStatement() {
+        String code = TestUtils.getFileFromResource("/sourceFile/sourceFileWithUsingStatement.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        SourceFile sourceFile = new SourceFileVisitor().visitSourceFile(parser.sourceFile());
+        assertNotNull(sourceFile, "SourceFile was not recognized by parser");
+        assertEquals(sourceFile.getUsingStatements().size(), 1, "SourceFile does not have using statement");
 
     }
 }
