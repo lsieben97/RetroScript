@@ -1,6 +1,7 @@
 package com.lsieben.vnes.parser;
 
 import com.lsieben.vnes.lang.constructs.SourceFile;
+import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
 import com.lsieben.vnes.lang.visitors.SourceFileVisitor;
 import com.lsieben.vnes.logger.Logger;
 import com.lsieben.vnes.parser.generated.vNESLexer;
@@ -24,6 +25,7 @@ public class Parser {
         TokenStream tokens = new CommonTokenStream(lexer);
         vNESParser parser = new vNESParser(tokens);
         parser.setBuildParseTree(true);
+        parser.addErrorListener(new ErrorListener());
         return new SourceFileVisitor().visit(parser.sourceFile());
     }
 }
