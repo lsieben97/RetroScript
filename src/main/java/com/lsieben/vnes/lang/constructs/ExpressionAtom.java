@@ -8,6 +8,7 @@ public class ExpressionAtom extends LanguageConstruct {
     private String string;
     private FunctionCall functionCall;
     private String id;
+    private boolean booleanValue;
 
     public ExpressionAtom(ParserRuleContext context) {
         super(context);
@@ -51,5 +52,13 @@ public class ExpressionAtom extends LanguageConstruct {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public boolean getBooleanValue() {
+        return booleanValue;
+    }
+
+    public void setBooleanValue(boolean booleanValue) {
+        this.booleanValue = booleanValue;
     }
 }

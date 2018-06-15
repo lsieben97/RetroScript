@@ -3,13 +3,23 @@ package com.lsieben.vnes.lang.exceptions;
 import com.lsieben.vnes.logger.Message;
 
 public class vNESWarning {
-    private int code = -1;
-    private String message = "Unknown warning";
+    private String code;
+    private String message;
 
     public vNESWarning(String... arguments) {
+        message = getMessage();
+        code = getCode();
         for(int i = 1; i < arguments.length + 1; i++) {
             message = message.replace("$" + String.valueOf(i), arguments[i]);
         }
+    }
+
+    public String getMessage() {
+        return "Unknown error";
+    }
+
+    public String getCode() {
+        return "-1";
     }
 
     public Message toMessage() {

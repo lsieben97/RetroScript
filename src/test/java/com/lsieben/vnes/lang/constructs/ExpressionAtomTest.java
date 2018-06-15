@@ -52,4 +52,26 @@ class ExpressionAtomTest {
         assertEquals(atom.getType().getName(), "FUNCTION", "Expression atom does not have FUNCTION as type.");
         assertNotNull(atom.getFunctionCall(), "Expression atom does not have a method call.");
     }
+
+    @Test
+    void TRUE() {
+        String code = TestUtils.getFileFromResource("/expressionAtom/TRUE.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
+        assertNotNull(atom, "Expression atom was not recognized by parser");
+        assertEquals(atom.getType().getName(), "BOOLEAN", "Expression atom does not have BOOLEAN as type.");
+        assertEquals(atom.getBooleanValue(), true, "Expression atom does not have TRUE as value.");
+    }
+
+    @Test
+    void FALSE() {
+        String code = TestUtils.getFileFromResource("/expressionAtom/FALSE.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
+        assertNotNull(atom, "Expression atom was not recognized by parser");
+        assertEquals(atom.getType().getName(), "BOOLEAN", "Expression atom does not have BOOLEAN as type.");
+        assertEquals(atom.getBooleanValue(), false, "Expression atom does not have a FALSE as value.");
+    }
 }

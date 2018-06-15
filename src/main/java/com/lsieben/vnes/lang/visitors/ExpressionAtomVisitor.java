@@ -23,6 +23,12 @@ public class ExpressionAtomVisitor extends vNESBaseVisitor<ExpressionAtom> {
         } else if (ctx.functionCall() != null) {
             atom.setType(new DataType("FUNCTION"));
             atom.setFunctionCall(ctx.functionCall().accept(new FunctionCallVisitor()));
+        } else if (ctx.False() != null) {
+            atom.setType(new DataType("BOOLEAN"));
+            atom.setBooleanValue(false);
+        } else if (ctx.True() != null) {
+            atom.setType(new DataType("BOOLEAN"));
+            atom.setBooleanValue(true);
         }
 
         return atom;

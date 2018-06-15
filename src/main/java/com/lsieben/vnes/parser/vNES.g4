@@ -52,7 +52,10 @@ StringLiteral: Quotes (( 'a' .. 'z' | 'A' .. 'Z' ) | ( 'a' .. 'z' | 'A' .. 'Z' |
 rest_of_line
  : ~NL* // match any token other than a line break zero or more times
  ;
-dataType: ID | 'NUMBER' | 'STRING' | 'ENTITY';
+dataType: ID | 'NUMBER' | 'STRING' | 'ENTITY' | 'BOOLEAN';
+
+True: 'TRUE';
+False: 'FALSE';
 
 Use: 'USE';
 ID
@@ -105,7 +108,7 @@ arithmeticOperator: Addition | Minus | Times | Devision;
 
 expression: atom (arithmeticExpressionComponent)*;
 arithmeticExpressionComponent: arithmeticOperator atom;
-atom: INT | functionCall | StringLiteral | ID;
+atom: INT | functionCall | StringLiteral | ID | True | False;
 
 Addition: '+';
 Minus: '-';
