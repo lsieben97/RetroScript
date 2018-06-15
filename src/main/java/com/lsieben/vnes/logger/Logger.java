@@ -3,6 +3,8 @@ package com.lsieben.vnes.logger;
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
 import com.lsieben.vnes.Compiler;
+import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
+import com.lsieben.vnes.lang.exceptions.vNESWarning;
 
 /**
  * Logger class to write stuff to the console.
@@ -12,6 +14,8 @@ public class Logger {
      * Colored printer to write with color.
      */
     private static ColoredPrinter cp;
+
+    private static LoggingProvider provider = new CliLogger();
 
     /**
      * Start the logger with the given level.
@@ -28,7 +32,7 @@ public class Logger {
      * @param message The message to write.
      */
     public static void writeDebug(String message) {
-        cp.debugPrintln("[DEBUG]\t" + message, 2);
+        cp.println(provider.getDebug(message));
     }
 
     /**
@@ -36,7 +40,7 @@ public class Logger {
      * @param message The message to write.
      */
     public static void writeInfo(String message) {
-        cp.debugPrintln("[INFO]\t" + message, 2);
+        cp.println(provider.getInfo(message));
     }
 
     /**
@@ -44,7 +48,15 @@ public class Logger {
      * @param message The message to write.
      */
     public static void writeWarning(String message) {
-        cp.debugPrintln("[WARNING]\t" + message, Ansi.Attribute.NONE, Ansi.FColor.YELLOW, Ansi.BColor.BLACK);
+        cp.println(provider.getWarning(message));
+    }
+
+    /**
+     * Write a debug message to the console.
+     * @param message The message to write.
+     */
+    public static void writeWarning(vNESWarning message) {
+        cp.println(provider.getWarning(message));
     }
 
     /**
@@ -60,14 +72,36 @@ public class Logger {
      * @param message The message to write.
      */
     public static void writeError(String message, boolean exit) {
-        cp.debugPrintln("[ERROR]\t" + message, Ansi.Attribute.NONE, Ansi.FColor.RED, Ansi.BColor.BLACK);
+        cp.debugPrintln(provider.getError(message));
         if (exit) {
             System.exit(-1);
         }
     }
 
-    public static void writeHeader() {
-        cp.debugPrintln("vNES " + Compiler.VERSION + "(c) 2018 Luc Sieben");
+    /**
+     * Write a debug message to the console and exit.
+     * @param message The message to write.
+     */
+    public static void writeError(vNESCompilerException message, boolean exit) {
+        cp.debugPrintln(provider.getError(message));
+        if (exit) {
+            System.exit(-1);
+        }
     }
 
+    /**
+     * Write a error message to the console and exit.
+     * @param message The message to write.
+     */
+    public static void writeError(vNESCompilerException message) {
+        writeError(message, true);
+    }
+
+    public static void writeHeader() {
+        cp.println("vNES " + Compiler.VERSION + "(c) 2018 Luc Sieben");
+    }
+
+    public static void setProvider(LoggingProvider provider) {
+        Logger.provider = provider;
+    }
 }
