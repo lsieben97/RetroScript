@@ -12,7 +12,8 @@ A high level programming language to sourceFile NES games.
     - [ ] Array's (only for build in datatypes and static array size)
 - [ ] Backend
     - [ ] Parsing
-        - [ ] Visitors
+        - [x] Visitors
+        - [ ] Validators
         
     - [ ] Code Generation
         - [ ] Implementors
@@ -21,7 +22,8 @@ A high level programming language to sourceFile NES games.
             - [x] Program memory
             - [ ] Ram memory
             - [ ] PPU memory
-            - [ ] APU momory
+            - [ ] APU memory
+            - [ ] Garbage collection
         - [ ] Rom file generation
     - [ ] NES features
         - [ ] PPU support
@@ -39,7 +41,8 @@ A high level programming language to sourceFile NES games.
             - [ ] `.mid`/`.midi`
             - [ ] custom format (optional)
         - [ ] Runtime
-            - [ ] `.asm`
+            - [ ] `.vasm` parser / visitors.
+            - [ ] `.vasm`
      - [ ] vNES runtime
         - [ ] Design runtime
         - [ ] Implement runtime
