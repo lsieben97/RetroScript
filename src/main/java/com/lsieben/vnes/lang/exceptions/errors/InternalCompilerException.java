@@ -4,8 +4,8 @@ import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
 
 public class InternalCompilerException extends vNESCompilerException {
 
-    public InternalCompilerException(String... arguments) {
-        super(arguments);
+    public InternalCompilerException(String location, String... arguments) {
+        super(location, arguments);
     }
     @Override
     public String getMessage() {

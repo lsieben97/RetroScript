@@ -1,0 +1,4 @@
+DEF SCREEN: TEST
+    DEF FUNCTION: Test()
+    END
+END

@@ -17,9 +17,15 @@ public class SourceFileVisitor extends vNESBaseVisitor<SourceFile> {
         SourceFile sourceFile = new SourceFile(ctx);
 
         List<vNESModule> modules = ctx.module().stream().map(module -> module.accept(new ModuleVisitor())).collect(Collectors.toList());
+        for( vNESModule module : modules) {
+            module.setSourceFile(sourceFile);
+        }
         sourceFile.setModules(modules);
 
         List<UsingStatement> usingStatements = ctx.useStatement().stream().map(useStatement -> useStatement.accept(new UsingStatementVisitor())).collect(Collectors.toList());
+        for( UsingStatement usingStatement : usingStatements) {
+            usingStatement.setSourceFile(sourceFile);
+        }
         sourceFile.setUsingStatements(usingStatements);
 
         return sourceFile;

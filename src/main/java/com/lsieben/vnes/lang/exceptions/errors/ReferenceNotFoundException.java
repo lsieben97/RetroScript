@@ -2,18 +2,19 @@ package com.lsieben.vnes.lang.exceptions.errors;
 
 import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
 
-public class SyntaxException extends vNESCompilerException {
+public class ReferenceNotFoundException extends vNESCompilerException {
 
-    public SyntaxException(String location, String... arguments) {
+    public ReferenceNotFoundException(String location, String... arguments) {
         super(location, arguments);
     }
+
     @Override
     public String getMessage() {
-        return "Syntax error: $1";
+        return "Could not find $1 '$2'";
     }
 
     @Override
     public String getCode() {
-        return "001";
+        return "002";
     }
 }

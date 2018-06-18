@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.lsieben.vnes.ProjectManager;
 import com.lsieben.vnes.lang.constructs.CodeBase;
 import com.lsieben.vnes.lang.constructs.SourceFile;
+import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
 import com.lsieben.vnes.logger.Logger;
 import com.lsieben.vnes.models.VnesProject;
 import com.lsieben.vnes.parser.Parser;
@@ -42,7 +43,13 @@ public class Compiler {
                     for( File file : sourceFiles) {
                         codeBase.getSourceFiles().add(Parser.parseFile(file));
                     }
-                    // todo validate id's in each sourceFile
+
+                    try {
+                        codeBase.validate();
+                    }
+                    catch (vNESCompilerException ex) {
+                        Logger.writeError(ex);
+                    }
 
                     // Write codebase to a file.
 

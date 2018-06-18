@@ -30,4 +30,26 @@ class vNESModuleTest {
         assertEquals(module.getModuleName(), "TEST", "Module Name is not correct");
         assertEquals(module.getType(), ModuleType.Native, "Module type is not native");
     }
+
+    @Test
+    void moduleWithEntity() {
+        String code = TestUtils.getFileFromResource("/module/moduleWithEntity.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        vNESModule module = new ModuleVisitor().visitModule(parser.module());
+        assertNotNull(module, "Module was not recognized by parser");
+        assertEquals(module.getModuleName(), "TEST", "Module Name is not correct.");
+        assertEquals(module.getEntities().size(), 1, "Module has not 1 entity.");
+    }
+
+    @Test
+    void moduleWithFunction() {
+        String code = TestUtils.getFileFromResource("/module/moduleWithFunction.vns");
+        vNESParser parser = TestUtils.getParserForString(code);
+
+        vNESModule module = new ModuleVisitor().visitModule(parser.module());
+        assertNotNull(module, "Module was not recognized by parser");
+        assertEquals(module.getModuleName(), "TEST", "Module Name is not correct.");
+        assertEquals(module.getFunctions().size(), 1, "Module has not 1 function.");
+    }
 }

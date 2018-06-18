@@ -2,25 +2,14 @@ package com.lsieben.vnes.lang.constructs;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
-public class Property extends LanguageConstruct implements Identifier {
+public class PropertyAssignment extends LanguageConstruct {
 
     private String name;
     private DataType type;
     private Expression value;
-    private boolean mandatory = false;
 
-    public Property(ParserRuleContext context) {
+    public PropertyAssignment(ParserRuleContext context) {
         super(context);
-    }
-
-    @Override
-    public String getIdentifierName() {
-        return name;
-    }
-
-    @Override
-    public DataType getIdentifierType() {
-        return type;
     }
 
     public Expression getValue() {
@@ -39,11 +28,11 @@ public class Property extends LanguageConstruct implements Identifier {
         this.type = type;
     }
 
-    public boolean isMandatory() {
-        return mandatory;
+    public String getName() {
+        return name;
     }
 
-    public void setMandatory(boolean mandatory) {
-        this.mandatory = mandatory;
+    public DataType getType() {
+        return type;
     }
 }

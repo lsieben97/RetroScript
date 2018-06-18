@@ -7,6 +7,7 @@ public class Message {
     private String timestamp = LocalDateTime.now().toString();
     private String code = "-1";
     private String message;
+    private String location;
 
     public Message(String message) {
         this.message = message;
@@ -32,9 +33,13 @@ public class Message {
         xml += "<code>" + code + "</code>";
         xml += "<timestamp>" + timestamp + "</timestamp>";
         xml += "<message>" + message + "</message>";
+        xml += "<location>" + location + "</location>";
 
         xml += "</message>";
         return xml;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

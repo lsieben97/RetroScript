@@ -10,13 +10,9 @@ comment
   docComment
     :  '###' rest_of_line
     ;
-
-FunctionalEntityModifier: 'FUNCTIONAL';
 NativeModifier: 'NATIVE';
 
 EntityDataType: 'ENTITY';
-
-entityModifier: FunctionalEntityModifier | NativeModifier;
 
 Colon: ':';
 
@@ -73,8 +69,8 @@ moduleDefinition: Define NativeModifier? 'MODULE' Colon ID;
 
 useStatement: 'USE' ID;
 
-entity: comment* entityDefinition entityBody endClause;
-entityDefinition: Define entityModifier* dataType Colon ID;
+entity: comment* entityDefinition (function | propertyDefinition | propertyAssignment)* endClause;
+entityDefinition: Define dataType Colon ID;
 
 functionDefinition: comment* Define Function Colon ID OpenBracket definitionArgumentSpec* CloseBracket (Colon dataType)?;
 definitionArgumentSpec: ID Colon dataType Comma?;
@@ -89,7 +85,7 @@ functionBody: statement*;
 
 function: functionDefinition functionBody endClause;
 
-entityBody: entityComponent*;
+
 
 entityComponent: function | propertyDefinition | propertyAssignment;
 

@@ -5,10 +5,13 @@ import com.lsieben.vnes.logger.Message;
 public class vNESCompilerException extends Exception {
     private String code;
     private String message;
+    private String location;
 
-    public vNESCompilerException(String... arguments) {
+    public final String newLine = System.lineSeparator();
+    public vNESCompilerException(String location, String... arguments) {
         message = getMessage();
         code = getCode();
+        this.location = location;
         for(int i = 1; i < arguments.length + 1; i++) {
             message = message.replace("$" + String.valueOf(i), arguments[i]);
         }

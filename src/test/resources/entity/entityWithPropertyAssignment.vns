@@ -1,0 +1,3 @@
+DEF SCREEN: TEST
+test = 1
+END

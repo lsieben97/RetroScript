@@ -23,12 +23,6 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDocComment(vNESParser.DocCommentContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link vNESParser#entityModifier}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEntityModifier(vNESParser.EntityModifierContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link vNESParser#rest_of_line}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -118,12 +112,6 @@ public interface vNESVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFunction(vNESParser.FunctionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link vNESParser#entityBody}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitEntityBody(vNESParser.EntityBodyContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link vNESParser#entityComponent}.
 	 * @param ctx the parse tree

@@ -31,13 +31,6 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitEntityModifier(vNESParser.EntityModifierContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitRest_of_line(vNESParser.Rest_of_lineContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -137,13 +130,6 @@ public class vNESBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements v
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitFunction(vNESParser.FunctionContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitEntityBody(vNESParser.EntityBodyContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

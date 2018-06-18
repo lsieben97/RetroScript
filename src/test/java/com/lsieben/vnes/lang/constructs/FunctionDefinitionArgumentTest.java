@@ -16,7 +16,7 @@ class FunctionDefinitionArgumentTest {
 
         FunctionDefinitionArgument argument = new FunctionDefinitionArgumentVisitor().visitDefinitionArgumentSpec(parser.definitionArgumentSpec());
         assertNotNull(argument, "Argument was not recognized by parser");
-        assertEquals(argument.getIdentifierName(), "test", "Argument does not have test as name.");
-        assertEquals(argument.getIdentifierType().getName(), "NUMBER", "Argument does not have NUMBER as type.");
+        assertEquals(argument.getName(), "test", "Argument does not have test as name.");
+        assertEquals(argument.getDataType().getName(), "NUMBER", "Argument does not have NUMBER as type.");
     }
 }
