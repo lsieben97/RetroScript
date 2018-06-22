@@ -1,5 +1,6 @@
-package com.lsieben.vnes.lang.constructs;
+package com.lsieben.vnes.lang.constructs.statements;
 
+import com.lsieben.vnes.lang.constructs.statements.FunctionCall;
 import com.lsieben.vnes.lang.visitors.FunctionCallVisitor;
 import com.lsieben.vnes.parser.generated.vNESParser;
 import com.lsieben.vnes.test_utils.TestUtils;

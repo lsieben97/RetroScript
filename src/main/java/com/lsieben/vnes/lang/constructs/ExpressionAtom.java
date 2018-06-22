@@ -1,5 +1,6 @@
 package com.lsieben.vnes.lang.constructs;
 
+import com.lsieben.vnes.lang.constructs.statements.FunctionCall;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 public class ExpressionAtom extends LanguageConstruct {
@@ -9,6 +10,8 @@ public class ExpressionAtom extends LanguageConstruct {
     private FunctionCall functionCall;
     private String id;
     private boolean booleanValue;
+    private Expression expression;
+    private ArithmeticExpressionComponent expressionComponent;
 
     public ExpressionAtom(ParserRuleContext context) {
         super(context);
@@ -60,5 +63,21 @@ public class ExpressionAtom extends LanguageConstruct {
 
     public void setBooleanValue(boolean booleanValue) {
         this.booleanValue = booleanValue;
+    }
+
+    public Expression getExpression() {
+        return expression;
+    }
+
+    public void setExpression(Expression expression) {
+        this.expression = expression;
+    }
+
+    public ArithmeticExpressionComponent getExpressionComponent() {
+        return expressionComponent;
+    }
+
+    public void setExpressionComponent(ArithmeticExpressionComponent expressionComponent) {
+        this.expressionComponent = expressionComponent;
     }
 }

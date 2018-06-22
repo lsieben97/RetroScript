@@ -9,6 +9,7 @@ public class FunctionSignature extends LanguageConstruct {
     private DataType returnType;
     private boolean hasReturnType;
     private List<FunctionDefinitionArgument> arguments;
+    private Function function;
 
     public FunctionSignature(ParserRuleContext context) {
         super(context);
@@ -44,5 +45,13 @@ public class FunctionSignature extends LanguageConstruct {
 
     public void setHasReturnType(boolean hasReturnType) {
         this.hasReturnType = hasReturnType;
+    }
+
+    public Function getFunction() {
+        return function;
+    }
+
+    public void setFunction(Function function) {
+        this.function = function;
     }
 }

@@ -1,7 +1,7 @@
 package com.lsieben.vnes.lang.visitors;
 
 import com.lsieben.vnes.lang.constructs.Expression;
-import com.lsieben.vnes.lang.constructs.FunctionCall;
+import com.lsieben.vnes.lang.constructs.statements.FunctionCall;
 import com.lsieben.vnes.parser.generated.vNESBaseVisitor;
 import com.lsieben.vnes.parser.generated.vNESParser;
 

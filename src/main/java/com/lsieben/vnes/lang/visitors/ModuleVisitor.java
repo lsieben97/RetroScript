@@ -22,10 +22,21 @@ public class ModuleVisitor extends vNESBaseVisitor<vNESModule> {
         module.setModuleName(ctx.moduleDefinition().ID().getSymbol().getText());
 
         List<Entity> entities = ctx.entity().stream().map(entity -> entity.accept(new EntityVisitor())).collect(Collectors.toList());
+
+        for (Entity entity : entities) {
+            entity.setModule(module);
+        }
+
         module.setEntities(entities);
 
         List<Function> functions = ctx.function().stream().map(function -> function.accept(new FunctionVisitor())).collect(Collectors.toList());
+
+        for (Function function : functions) {
+            function.setModule(module);
+        }
+
         module.setFunctions(functions);
+
         return module;
     }
 }

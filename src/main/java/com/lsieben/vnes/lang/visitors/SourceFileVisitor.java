@@ -1,9 +1,6 @@
 package com.lsieben.vnes.lang.visitors;
 
-import com.lsieben.vnes.lang.constructs.Entity;
-import com.lsieben.vnes.lang.constructs.SourceFile;
-import com.lsieben.vnes.lang.constructs.UsingStatement;
-import com.lsieben.vnes.lang.constructs.vNESModule;
+import com.lsieben.vnes.lang.constructs.*;
 import com.lsieben.vnes.parser.generated.vNESBaseVisitor;
 import com.lsieben.vnes.parser.generated.vNESParser;
 
@@ -27,6 +24,8 @@ public class SourceFileVisitor extends vNESBaseVisitor<SourceFile> {
             usingStatement.setSourceFile(sourceFile);
         }
         sourceFile.setUsingStatements(usingStatements);
+
+        sourceFile.setCodeBase(CodeBase.getCurrent());
 
         return sourceFile;
     }

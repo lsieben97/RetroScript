@@ -7,6 +7,7 @@ public class PropertyAssignment extends LanguageConstruct {
     private String name;
     private DataType type;
     private Expression value;
+    private Entity entity;
 
     public PropertyAssignment(ParserRuleContext context) {
         super(context);
@@ -34,5 +35,13 @@ public class PropertyAssignment extends LanguageConstruct {
 
     public DataType getType() {
         return type;
+    }
+
+    public Entity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(Entity entity) {
+        this.entity = entity;
     }
 }

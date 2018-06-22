@@ -37,6 +37,7 @@ public class Compiler {
                     Logger.writeInfo("Starting Library compilation for project '" + project.getName() + "'");
                     // compile library...
                     CodeBase codeBase = new CodeBase();
+                    CodeBase.setCurrent(codeBase);
                     codeBase.setProject(project);
                     codeBase.setSourceFiles(new ArrayList<>());
                     List<File> sourceFiles = ProjectManager.getSourceFilesForProject(project);

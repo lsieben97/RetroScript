@@ -1,0 +1,3 @@
+DEF FUNCTION: Test()
+    RETURN 1
+END

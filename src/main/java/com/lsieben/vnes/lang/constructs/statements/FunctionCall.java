@@ -1,11 +1,12 @@
-package com.lsieben.vnes.lang.constructs;
+package com.lsieben.vnes.lang.constructs.statements;
 
+import com.lsieben.vnes.lang.constructs.Expression;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FunctionCall extends LanguageConstruct {
+public class FunctionCall extends Statement {
     private String name;
     private List<Expression> arguments = new ArrayList<>();
 

@@ -46,9 +46,7 @@ class UsingStatementTest {
 
         UsingStatementValidator validator = mock(UsingStatementValidator.class);
         when(validator.getSourcePositionOfConstruct(usingStatement)).thenReturn("location");
-        CodeBase codeBase = mock(CodeBase.class);
-        when(codeBase.hasModule("VNES")).thenReturn(true);
-        CodeBase.setCurrent(codeBase);
+
         assertThrows(ReferenceNotFoundException.class, validator::validate);
     }
 }

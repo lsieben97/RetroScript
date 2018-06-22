@@ -77,7 +77,7 @@ definitionArgumentSpec: ID Colon dataType Comma?;
 
 endClause: End;
 
-statement: returnStatement;
+statement: returnStatement | functionCall;
 
 returnStatement: ReturnKeyword expression;
 

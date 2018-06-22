@@ -22,6 +22,11 @@ public class FunctionSignatureVisitor extends vNESBaseVisitor<FunctionSignature>
         }
 
         List<FunctionDefinitionArgument> arguments = ctx.definitionArgumentSpec().stream().map(argument -> argument.accept(new FunctionDefinitionArgumentVisitor())).collect(Collectors.toList());
+
+        for (FunctionDefinitionArgument argument : arguments) {
+            argument.setFunctionSignature(signature);
+        }
+
         signature.setArguments(arguments);
 
         return signature;

@@ -8,6 +8,7 @@ public class PropertyDefinition extends LanguageConstruct {
     private DataType type;
     private Expression value;
     private boolean mandatory = false;
+    private Entity entity;
 
     public PropertyDefinition(ParserRuleContext context) {
         super(context);
@@ -43,5 +44,13 @@ public class PropertyDefinition extends LanguageConstruct {
 
     public DataType getType() {
         return type;
+    }
+
+    public Entity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(Entity entity) {
+        this.entity = entity;
     }
 }

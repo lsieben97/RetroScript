@@ -11,6 +11,8 @@ public class Entity extends LanguageConstruct {
     private List<Function> functions = new ArrayList<>();
     private List<PropertyAssignment> propertyAssignments = new ArrayList<>();
     private List<PropertyDefinition> propertyDefinitions = new ArrayList<>();
+    private vNESModule module;
+
 
     public Entity(ParserRuleContext context) {
         super(context);
@@ -54,5 +56,13 @@ public class Entity extends LanguageConstruct {
 
     public String getName() {
         return name;
+    }
+
+    public vNESModule getModule() {
+        return module;
+    }
+
+    public void setModule(vNESModule module) {
+        this.module = module;
     }
 }

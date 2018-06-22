@@ -20,12 +20,27 @@ public class EntityVisitor extends vNESBaseVisitor<Entity> {
         entity.setDataType(ctx.entityDefinition().dataType().accept(new DataTypeVisitor()));
 
         List<Function> functions = ctx.function().stream().map(function -> function.accept(new FunctionVisitor())).collect(Collectors.toList());
+
+        for (Function function : functions) {
+            function.setEntity(entity);
+        }
+
         entity.setFunctions(functions);
 
         List<PropertyAssignment> propertyAssignments = ctx.propertyAssignment().stream().map(propertyAssignment -> propertyAssignment.accept(new PropertyAssignmentVisitor())).collect(Collectors.toList());
         List<PropertyDefinition> propertyDefinitions = ctx.propertyDefinition().stream().map(propertyDefinition -> propertyDefinition.accept(new PropertyDefinitionVisitor())).collect(Collectors.toList());
+
         entity.setPropertyAssignments(new ArrayList<>());
         entity.setPropertyDefinitions(new ArrayList<>());
+
+        for (PropertyAssignment propertyAssignment : propertyAssignments) {
+            propertyAssignment.setEntity(entity);
+        }
+
+        for (PropertyDefinition propertyDefinition : propertyDefinitions) {
+            propertyDefinition.setEntity(entity);
+        }
+
         entity.getPropertyAssignments().addAll(propertyAssignments);
         entity.getPropertyDefinitions().addAll(propertyDefinitions);
 
