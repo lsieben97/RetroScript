@@ -12,11 +12,6 @@ public class SourceFileValidator extends Validator<SourceFile> {
 
     @Override
     public void validate() throws vNESCompilerException {
-        validateChildren();
-    }
-
-    @Override
-    public void validateChildren() throws vNESCompilerException {
         for (UsingStatement usingStatement : getConstruct().getUsingStatements()) {
             usingStatement.getValidator().validate();
         }

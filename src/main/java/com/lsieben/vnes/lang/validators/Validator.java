@@ -12,7 +12,6 @@ public abstract class Validator<T extends LanguageConstruct> {
     }
 
     public abstract void validate() throws vNESCompilerException;
-    public abstract void validateChildren() throws vNESCompilerException;
 
     public String getSourcePositionOfConstruct(LanguageConstruct construct) {
         return construct.getContext().getStart().getInputStream().getSourceName() +

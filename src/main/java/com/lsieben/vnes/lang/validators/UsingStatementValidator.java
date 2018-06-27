@@ -41,9 +41,4 @@ public class UsingStatementValidator extends Validator<UsingStatement> {
             makeError(new ReferenceNotFoundException("MODULE", getConstruct().getModuleName()));
         }
     }
-
-    @Override
-    public void validateChildren() throws vNESCompilerException {
-
-    }
 }
