@@ -1,4 +1,4 @@
-# vNES Programming language
+# RetroScript Programming language
 A high level programming language to sourceFile NES games.
 
 
