@@ -5,7 +5,7 @@ import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
 public class InternalCompilerException extends vNESCompilerException {
 
     public InternalCompilerException(String location, String... arguments) {
-        super(location, arguments);
+        super(arguments);
     }
     @Override
     public String getMessage() {

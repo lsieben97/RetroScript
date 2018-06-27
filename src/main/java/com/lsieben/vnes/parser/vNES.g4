@@ -65,7 +65,7 @@ sourceFile: (module+ | useStatement+)*;
 
 module: moduleDefinition (entity | function)* endClause;
 
-moduleDefinition: Define NativeModifier? 'MODULE' Colon ID;
+moduleDefinition: Define NativeModifier? 'MODULE' ID;
 
 useStatement: 'USE' ID;
 

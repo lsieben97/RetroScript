@@ -1,9 +1,7 @@
 package com.lsieben.vnes.lang.validators;
 
-import com.lsieben.vnes.lang.constructs.CodeBase;
 import com.lsieben.vnes.lang.constructs.SourceFile;
 import com.lsieben.vnes.lang.constructs.UsingStatement;
-import com.lsieben.vnes.lang.exceptions.errors.ReferenceNotFoundException;
 import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
 
 public class SourceFileValidator extends Validator<SourceFile> {
@@ -19,7 +17,7 @@ public class SourceFileValidator extends Validator<SourceFile> {
 
     @Override
     public void validateChildren() throws vNESCompilerException {
-        for (UsingStatement usingStatement : construct.getUsingStatements()) {
+        for (UsingStatement usingStatement : getConstruct().getUsingStatements()) {
             usingStatement.getValidator().validate();
         }
     }

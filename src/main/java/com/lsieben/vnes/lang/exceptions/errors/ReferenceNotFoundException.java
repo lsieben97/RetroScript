@@ -5,7 +5,7 @@ import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
 public class ReferenceNotFoundException extends vNESCompilerException {
 
     public ReferenceNotFoundException(String location, String... arguments) {
-        super(location, arguments);
+        super(arguments);
     }
 
     @Override

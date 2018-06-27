@@ -5,12 +5,13 @@ import com.lsieben.vnes.logger.Message;
 public class vNESWarning {
     private String code;
     private String message;
+    private String location;
 
     public vNESWarning(String... arguments) {
         message = getMessage();
         code = getCode();
         for(int i = 1; i < arguments.length + 1; i++) {
-            message = message.replace("$" + String.valueOf(i), arguments[i]);
+            message = message.replace("$" + String.valueOf(i), arguments[i - 1]);
         }
     }
 
@@ -32,5 +33,13 @@ public class vNESWarning {
     @Override
     public String toString() {
         return "vns" + String.valueOf(code) + ": " + message;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

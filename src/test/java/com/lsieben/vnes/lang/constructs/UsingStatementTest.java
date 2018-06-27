@@ -2,6 +2,7 @@ package com.lsieben.vnes.lang.constructs;
 
 import com.lsieben.vnes.lang.exceptions.errors.ReferenceNotFoundException;
 import com.lsieben.vnes.lang.exceptions.vNESCompilerException;
+import com.lsieben.vnes.lang.exceptions.warnings.DuplicateReferenceWarning;
 import com.lsieben.vnes.lang.validators.UsingStatementValidator;
 import com.lsieben.vnes.lang.visitors.UsingStatementVisitor;
 import com.lsieben.vnes.parser.generated.vNESParser;
@@ -28,25 +29,33 @@ class UsingStatementTest {
 
     @Test
     void validUsingStatement() throws vNESCompilerException {
-        UsingStatement usingStatement = new UsingStatement(new ParserRuleContext());
-        usingStatement.setModuleName("VNES");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/validUsingStatement.vns");
+        UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
-        UsingStatementValidator validator = mock(UsingStatementValidator.class);
-        when(validator.getSourcePositionOfConstruct(usingStatement)).thenReturn("location");
-        CodeBase codeBase = mock(CodeBase.class);
-        when(codeBase.hasModule("VNES")).thenReturn(false);
-        CodeBase.setCurrent(codeBase);
+        UsingStatementValidator validator = new UsingStatementValidator(usingStatement);
         validator.validate();
     }
 
     @Test()
     void invalidUsingStatement() {
-        UsingStatement usingStatement = new UsingStatement(new ParserRuleContext());
-        usingStatement.setModuleName("VNES");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/invalidUsingStatement.vns");
+        UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
+
+        UsingStatementValidator validator = new UsingStatementValidator(usingStatement);
+        assertThrows(ReferenceNotFoundException.class, validator::validate);
+    }
+
+    @Test()
+    void duplicateUsingStatement() throws vNESCompilerException {
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/duplicateUsingStatement.vns");
+        UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
         UsingStatementValidator validator = mock(UsingStatementValidator.class);
-        when(validator.getSourcePositionOfConstruct(usingStatement)).thenReturn("location");
+        when(validator.getConstruct()).thenReturn(usingStatement);
+        doCallRealMethod().when(validator).validate();
 
-        assertThrows(ReferenceNotFoundException.class, validator::validate);
+        validator.validate();
+
+        verify(validator).makeWarning(any(DuplicateReferenceWarning.class));
     }
 }

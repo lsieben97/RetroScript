@@ -8,12 +8,12 @@ public class vNESCompilerException extends Exception {
     private String location;
 
     public final String newLine = System.lineSeparator();
-    public vNESCompilerException(String location, String... arguments) {
+
+    public vNESCompilerException(String... arguments) {
         message = getMessage();
         code = getCode();
-        this.location = location;
         for(int i = 1; i < arguments.length + 1; i++) {
-            message = message.replace("$" + String.valueOf(i), arguments[i]);
+            message = message.replace("$" + String.valueOf(i), arguments[i - 1]);
         }
     }
 
@@ -30,6 +30,11 @@ public class vNESCompilerException extends Exception {
         Message msg = new Message(message);
         msg.setSeverity("warning");
         msg.setCode(code);
+        msg.setLocation(location);
         return msg;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
