@@ -12,7 +12,7 @@ class PropertyTest {
 
     @Test
     void propertyAssignment() {
-        String code = TestUtils.getFileFromResource("/property/assignment.vns");
+        String code = TestUtils.getFileFromResource("/property/assignment.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         PropertyAssignment property = new PropertyAssignmentVisitor().visitPropertyAssignment(parser.propertyAssignment());
@@ -23,7 +23,7 @@ class PropertyTest {
 
     @Test
     void propertyDefinition() {
-        String code = TestUtils.getFileFromResource("/property/definition.vns");
+        String code = TestUtils.getFileFromResource("/property/definition.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         PropertyDefinition property = new PropertyDefinitionVisitor().visitPropertyDefinition(parser.propertyDefinition());
@@ -35,7 +35,7 @@ class PropertyTest {
 
     @Test
     void mandatoryPropertyDefinition() {
-        String code = TestUtils.getFileFromResource("/property/mandatoryDefinition.vns");
+        String code = TestUtils.getFileFromResource("/property/mandatoryDefinition.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         PropertyDefinition property = new PropertyDefinitionVisitor().visitPropertyDefinition(parser.propertyDefinition());

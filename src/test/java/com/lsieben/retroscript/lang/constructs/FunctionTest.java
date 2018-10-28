@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FunctionTest {
     @Test
     void emptyFunction() {
-        String code = TestUtils.getFileFromResource("/function/emptyFunction.vns");
+        String code = TestUtils.getFileFromResource("/function/emptyFunction.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Function function = new FunctionVisitor().visitFunction(parser.function());
@@ -20,7 +20,7 @@ class FunctionTest {
 
     @Test
     void FunctionWithOneStatement() {
-        String code = TestUtils.getFileFromResource("/function/functionWithOneStatement.vns");
+        String code = TestUtils.getFileFromResource("/function/functionWithOneStatement.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Function function = new FunctionVisitor().visitFunction(parser.function());

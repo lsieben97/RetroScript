@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DataTypeTest {
     @Test
     void numberDataType() {
-        String code = TestUtils.getFileFromResource("/dataType/number.vns");
+        String code = TestUtils.getFileFromResource("/dataType/number.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         DataType dataType = new DataTypeVisitor().visitDataType(parser.dataType());
@@ -20,7 +20,7 @@ class DataTypeTest {
 
     @Test
     void idDataType() {
-        String code = TestUtils.getFileFromResource("/dataType/id.vns");
+        String code = TestUtils.getFileFromResource("/dataType/id.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         DataType dataType = new DataTypeVisitor().visitDataType(parser.dataType());

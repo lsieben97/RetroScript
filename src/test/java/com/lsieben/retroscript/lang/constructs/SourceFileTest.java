@@ -11,7 +11,7 @@ class SourceFileTest {
 
     @Test
     void programWithEmptyModule() {
-        String code = TestUtils.getFileFromResource("/sourceFile/sourceFileWithEmptyModule.vns");
+        String code = TestUtils.getFileFromResource("/sourceFile/sourceFileWithEmptyModule.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         SourceFile sourceFile = new SourceFileVisitor().visitSourceFile(parser.sourceFile());
@@ -22,7 +22,7 @@ class SourceFileTest {
 
     @Test
     void programWithUsingStatement() {
-        String code = TestUtils.getFileFromResource("/sourceFile/sourceFileWithUsingStatement.vns");
+        String code = TestUtils.getFileFromResource("/sourceFile/sourceFileWithUsingStatement.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         SourceFile sourceFile = new SourceFileVisitor().visitSourceFile(parser.sourceFile());

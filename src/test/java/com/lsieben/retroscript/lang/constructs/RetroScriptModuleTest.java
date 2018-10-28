@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RetroScriptModuleTest {
     @Test
     void emptyModule() {
-        String code = TestUtils.getFileFromResource("/module/emptyModule.vns");
+        String code = TestUtils.getFileFromResource("/module/emptyModule.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         RetroScriptModule module = new ModuleVisitor().visitModule(parser.module());
@@ -25,7 +25,7 @@ class RetroScriptModuleTest {
 
     @Test
     void emptyNativeModule() {
-        String code = TestUtils.getFileFromResource("/module/emptyNativeModule.vns");
+        String code = TestUtils.getFileFromResource("/module/emptyNativeModule.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         RetroScriptModule module = new ModuleVisitor().visitModule(parser.module());
@@ -36,7 +36,7 @@ class RetroScriptModuleTest {
 
     @Test
     void moduleWithEntity() {
-        String code = TestUtils.getFileFromResource("/module/moduleWithEntity.vns");
+        String code = TestUtils.getFileFromResource("/module/moduleWithEntity.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         RetroScriptModule module = new ModuleVisitor().visitModule(parser.module());
@@ -47,7 +47,7 @@ class RetroScriptModuleTest {
 
     @Test
     void moduleWithFunction() {
-        String code = TestUtils.getFileFromResource("/module/moduleWithFunction.vns");
+        String code = TestUtils.getFileFromResource("/module/moduleWithFunction.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         RetroScriptModule module = new ModuleVisitor().visitModule(parser.module());

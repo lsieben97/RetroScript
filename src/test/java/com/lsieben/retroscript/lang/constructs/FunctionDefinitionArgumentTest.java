@@ -11,7 +11,7 @@ class FunctionDefinitionArgumentTest {
 
     @Test
     void simpleArgument() {
-        String code = TestUtils.getFileFromResource("/functionDefinitionArgument/simpleArgument.vns");
+        String code = TestUtils.getFileFromResource("/functionDefinitionArgument/simpleArgument.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionDefinitionArgument argument = new FunctionDefinitionArgumentVisitor().visitDefinitionArgumentSpec(parser.definitionArgumentSpec());

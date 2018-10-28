@@ -16,7 +16,7 @@ class UsingStatementTest {
 
     @Test
     void simpleUsingStatement() {
-        String code = TestUtils.getFileFromResource("/usingStatement/simpleUsingStatement.vns");
+        String code = TestUtils.getFileFromResource("/usingStatement/simpleUsingStatement.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         UsingStatement usingStatement = new UsingStatementVisitor().visitUseStatement(parser.useStatement());
@@ -27,7 +27,7 @@ class UsingStatementTest {
 
     @Test
     void validUsingStatement() throws vNESCompilerException {
-        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/validUsingStatement.vns");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/validUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
         UsingStatementValidator validator = new UsingStatementValidator(usingStatement);
@@ -36,7 +36,7 @@ class UsingStatementTest {
 
     @Test()
     void invalidUsingStatement() {
-        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/invalidUsingStatement.vns");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/invalidUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
         UsingStatementValidator validator = new UsingStatementValidator(usingStatement);
@@ -45,7 +45,7 @@ class UsingStatementTest {
 
     @Test()
     void duplicateUsingStatement() throws vNESCompilerException {
-        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/duplicateUsingStatement.vns");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/duplicateUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
         UsingStatementValidator validator = mock(UsingStatementValidator.class);

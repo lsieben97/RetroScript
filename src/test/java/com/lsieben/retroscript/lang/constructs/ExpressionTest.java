@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExpressionTest {
     @Test
     void singleAtom() {
-        String code = TestUtils.getFileFromResource("/expression/singleAtom.vns");
+        String code = TestUtils.getFileFromResource("/expression/singleAtom.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Expression expression = new ExpressionVisitor().visitExpression(parser.expression());
@@ -21,7 +21,7 @@ class ExpressionTest {
 
     @Test
     void oneArithmeticComponent() {
-        String code = TestUtils.getFileFromResource("/expression/1ArithmeticComponent.vns");
+        String code = TestUtils.getFileFromResource("/expression/1ArithmeticComponent.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Expression expression = new ExpressionVisitor().visitExpression(parser.expression());
@@ -32,7 +32,7 @@ class ExpressionTest {
 
     @Test
     void twoArithmeticComponent() {
-        String code = TestUtils.getFileFromResource("/expression/2ArithmeticComponents.vns");
+        String code = TestUtils.getFileFromResource("/expression/2ArithmeticComponents.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Expression expression = new ExpressionVisitor().visitExpression(parser.expression());

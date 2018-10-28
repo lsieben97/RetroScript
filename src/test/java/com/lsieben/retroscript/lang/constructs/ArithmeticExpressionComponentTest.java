@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ArithmeticExpressionComponentTest {
     @Test
     void addition() {
-        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/addition.vns");
+        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/addition.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ArithmeticExpressionComponent arithmeticExpressionComponent = new ArithmeticExpressionComponentVisitor().visitArithmeticExpressionComponent(parser.arithmeticExpressionComponent());
@@ -21,7 +21,7 @@ class ArithmeticExpressionComponentTest {
 
     @Test
     void minus() {
-        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/minus.vns");
+        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/minus.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ArithmeticExpressionComponent arithmeticExpressionComponent = new ArithmeticExpressionComponentVisitor().visitArithmeticExpressionComponent(parser.arithmeticExpressionComponent());
@@ -32,7 +32,7 @@ class ArithmeticExpressionComponentTest {
 
     @Test
     void times() {
-        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/times.vns");
+        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/times.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ArithmeticExpressionComponent arithmeticExpressionComponent = new ArithmeticExpressionComponentVisitor().visitArithmeticExpressionComponent(parser.arithmeticExpressionComponent());
@@ -43,7 +43,7 @@ class ArithmeticExpressionComponentTest {
 
     @Test
     void division() {
-        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/division.vns");
+        String code = TestUtils.getFileFromResource("/arithmeticExpressionComponent/division.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ArithmeticExpressionComponent arithmeticExpressionComponent = new ArithmeticExpressionComponentVisitor().visitArithmeticExpressionComponent(parser.arithmeticExpressionComponent());

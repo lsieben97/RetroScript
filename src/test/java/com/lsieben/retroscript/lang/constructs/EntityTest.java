@@ -11,7 +11,7 @@ class EntityTest {
 
     @Test
     void emptyEntity() {
-        String code = TestUtils.getFileFromResource("/entity/emptyEntity.vns");
+        String code = TestUtils.getFileFromResource("/entity/emptyEntity.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Entity entity = new EntityVisitor().visitEntity(parser.entity());
@@ -22,7 +22,7 @@ class EntityTest {
 
     @Test
     void entityWithPropertyAssignment() {
-        String code = TestUtils.getFileFromResource("/entity/entityWithPropertyAssignment.vns");
+        String code = TestUtils.getFileFromResource("/entity/entityWithPropertyAssignment.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Entity entity = new EntityVisitor().visitEntity(parser.entity());
@@ -33,7 +33,7 @@ class EntityTest {
 
     @Test
     void entityWithPropertyDefinition() {
-        String code = TestUtils.getFileFromResource("/entity/entityWithPropertyDefinition.vns");
+        String code = TestUtils.getFileFromResource("/entity/entityWithPropertyDefinition.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Entity entity = new EntityVisitor().visitEntity(parser.entity());
@@ -44,7 +44,7 @@ class EntityTest {
 
     @Test
     void entityWithFunction() {
-        String code = TestUtils.getFileFromResource("/entity/entityWithFunction.vns");
+        String code = TestUtils.getFileFromResource("/entity/entityWithFunction.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         Entity entity = new EntityVisitor().visitEntity(parser.entity());

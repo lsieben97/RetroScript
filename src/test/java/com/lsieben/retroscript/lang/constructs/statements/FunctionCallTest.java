@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FunctionCallTest {
     @Test
     void noArguments() {
-        String code = TestUtils.getFileFromResource("/functionCall/noArguments.vns");
+        String code = TestUtils.getFileFromResource("/functionCall/noArguments.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionCall functionCall = new FunctionCallVisitor().visitFunctionCall(parser.functionCall());
@@ -21,7 +21,7 @@ class FunctionCallTest {
 
     @Test
     void oneArgument() {
-        String code = TestUtils.getFileFromResource("/functionCall/1Argument.vns");
+        String code = TestUtils.getFileFromResource("/functionCall/1Argument.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionCall functionCall = new FunctionCallVisitor().visitFunctionCall(parser.functionCall());
@@ -32,7 +32,7 @@ class FunctionCallTest {
 
     @Test
     void twoArgument() {
-        String code = TestUtils.getFileFromResource("/functionCall/2Arguments.vns");
+        String code = TestUtils.getFileFromResource("/functionCall/2Arguments.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionCall functionCall = new FunctionCallVisitor().visitFunctionCall(parser.functionCall());

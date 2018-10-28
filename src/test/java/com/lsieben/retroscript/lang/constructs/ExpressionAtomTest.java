@@ -11,7 +11,7 @@ class ExpressionAtomTest {
 
     @Test
     void ID() {
-        String code = TestUtils.getFileFromResource("/expressionAtom/id.vns");
+        String code = TestUtils.getFileFromResource("/expressionAtom/id.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
@@ -22,7 +22,7 @@ class ExpressionAtomTest {
 
     @Test
     void NUMBER() {
-        String code = TestUtils.getFileFromResource("/expressionAtom/number.vns");
+        String code = TestUtils.getFileFromResource("/expressionAtom/number.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
@@ -33,7 +33,7 @@ class ExpressionAtomTest {
 
     @Test
     void STRING() {
-        String code = TestUtils.getFileFromResource("/expressionAtom/string.vns");
+        String code = TestUtils.getFileFromResource("/expressionAtom/string.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
@@ -44,7 +44,7 @@ class ExpressionAtomTest {
 
     @Test
     void FUNCTION() {
-        String code = TestUtils.getFileFromResource("/expressionAtom/function.vns");
+        String code = TestUtils.getFileFromResource("/expressionAtom/function.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
@@ -55,7 +55,7 @@ class ExpressionAtomTest {
 
     @Test
     void TRUE() {
-        String code = TestUtils.getFileFromResource("/expressionAtom/TRUE.vns");
+        String code = TestUtils.getFileFromResource("/expressionAtom/TRUE.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());
@@ -66,7 +66,7 @@ class ExpressionAtomTest {
 
     @Test
     void FALSE() {
-        String code = TestUtils.getFileFromResource("/expressionAtom/FALSE.vns");
+        String code = TestUtils.getFileFromResource("/expressionAtom/FALSE.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         ExpressionAtom atom = new ExpressionAtomVisitor().visitAtom(parser.atom());

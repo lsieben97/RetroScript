@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FunctionSignatureTest {
     @Test
     void noReturnTypeNoArguments() {
-        String code = TestUtils.getFileFromResource("/functionSignature/noReturnTypeNoArguments.vns");
+        String code = TestUtils.getFileFromResource("/functionSignature/noReturnTypeNoArguments.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionSignature signature = new FunctionSignatureVisitor().visitFunctionDefinition(parser.functionDefinition());
@@ -21,7 +21,7 @@ class FunctionSignatureTest {
 
     @Test
     void ReturnTypeNoArguments() {
-        String code = TestUtils.getFileFromResource("/functionSignature/returnTypeNoArguments.vns");
+        String code = TestUtils.getFileFromResource("/functionSignature/returnTypeNoArguments.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionSignature signature = new FunctionSignatureVisitor().visitFunctionDefinition(parser.functionDefinition());
@@ -32,7 +32,7 @@ class FunctionSignatureTest {
 
     @Test
     void ReturnType1Argument() {
-        String code = TestUtils.getFileFromResource("/functionSignature/returnType1Argument.vns");
+        String code = TestUtils.getFileFromResource("/functionSignature/returnType1Argument.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionSignature signature = new FunctionSignatureVisitor().visitFunctionDefinition(parser.functionDefinition());
@@ -45,7 +45,7 @@ class FunctionSignatureTest {
 
     @Test
     void ReturnTypeMultipleArguments() {
-        String code = TestUtils.getFileFromResource("/functionSignature/returnTypeMultipleArguments.vns");
+        String code = TestUtils.getFileFromResource("/functionSignature/returnTypeMultipleArguments.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionSignature signature = new FunctionSignatureVisitor().visitFunctionDefinition(parser.functionDefinition());
@@ -58,7 +58,7 @@ class FunctionSignatureTest {
 
     @Test
     void ReturnTypeMultipleArgumentsWithoutComma() {
-        String code = TestUtils.getFileFromResource("/functionSignature/returnTypeMultipleArgumentsWithoutComma.vns");
+        String code = TestUtils.getFileFromResource("/functionSignature/returnTypeMultipleArgumentsWithoutComma.rsf");
         RetroScriptParser parser = TestUtils.getParserForString(code);
 
         FunctionSignature signature = new FunctionSignatureVisitor().visitFunctionDefinition(parser.functionDefinition());

@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 class UsingStatementValidatorTest {
     @Test
     void validUsingStatement() throws vNESCompilerException {
-        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/validUsingStatement.vns");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/validUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
         UsingStatementValidator validator = new UsingStatementValidator(usingStatement);
@@ -24,7 +24,7 @@ class UsingStatementValidatorTest {
 
     @Test()
     void invalidUsingStatement() {
-        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/invalidUsingStatement.vns");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/invalidUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
         UsingStatementValidator validator = new UsingStatementValidator(usingStatement);
@@ -33,7 +33,7 @@ class UsingStatementValidatorTest {
 
     @Test()
     void duplicateUsingStatement() throws vNESCompilerException {
-        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/duplicateUsingStatement.vns");
+        CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/duplicateUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
         UsingStatementValidator validator = mock(UsingStatementValidator.class);
