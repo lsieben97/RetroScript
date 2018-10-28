@@ -3,7 +3,7 @@ package com.lsieben.retroscript.codegen.assembly;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Opcode {
+public abstract class OpCode {
     public Map<AddressingMode, Byte> instructionMap = new HashMap<>();
     public Map<AddressingMode, CycleMeasurement> cycleMap = new HashMap<>();
     public String mnemonic;
@@ -12,7 +12,7 @@ public abstract class Opcode {
 
     protected abstract void initialize();
 
-    public Opcode() {
+    public OpCode() {
         initialize();
     }
 }

@@ -1,23 +1,23 @@
 package com.lsieben.retroscript.codegen.assembly;
 
 public class AsmInstruction {
-    private Opcode opcode;
+    private OpCode opcode;
     private AddressingMode addressingMode;
     private byte[] argument;
 
-    public AsmInstruction(Opcode opcode, AddressingMode addressingMode, byte[] argument) {
+    public AsmInstruction(OpCode opcode, AddressingMode addressingMode, byte[] argument) {
         this.opcode = opcode;
         this.addressingMode = addressingMode;
         this.argument = argument;
     }
 
-    public AsmInstruction(Opcode opcode, AddressingMode addressingMode) {
+    public AsmInstruction(OpCode opcode, AddressingMode addressingMode) {
         this.opcode = opcode;
         this.addressingMode = addressingMode;
         this.argument = new byte[] {};
     }
 
-    public Opcode getOpcode() {
+    public OpCode getOpcode() {
         return opcode;
     }
 
