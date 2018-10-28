@@ -1,5 +1,6 @@
 package com.lsieben.retroscript.lang.constructs;
 
+import com.lsieben.retroscript.lang.validators.ModuleValidator;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class RetroScriptModule extends LanguageConstruct {
 
     public RetroScriptModule(ParserRuleContext context) {
         super(context);
+        setValidator(new ModuleValidator(this));
     }
 
     public String getModuleName() {
@@ -54,5 +56,14 @@ public class RetroScriptModule extends LanguageConstruct {
 
     public void setFunctions(List<Function> functions) {
         this.functions = functions;
+    }
+
+    public boolean hasDataType(DataType type) {
+        for (Entity entity : getEntities()) {
+            if (entity.getDataType().getName().equals("ENTITY") && entity.getName().equals(type.getName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -674,11 +674,11 @@ public class RetroScriptParser extends Parser {
 
 	public static class EntityDefinitionContext extends ParserRuleContext {
 		public TerminalNode Define() { return getToken(RetroScriptParser.Define, 0); }
+		public TerminalNode ID() { return getToken(RetroScriptParser.ID, 0); }
+		public TerminalNode Colon() { return getToken(RetroScriptParser.Colon, 0); }
 		public DataTypeContext dataType() {
 			return getRuleContext(DataTypeContext.class,0);
 		}
-		public TerminalNode Colon() { return getToken(RetroScriptParser.Colon, 0); }
-		public TerminalNode ID() { return getToken(RetroScriptParser.ID, 0); }
 		public EntityDefinitionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -699,11 +699,11 @@ public class RetroScriptParser extends Parser {
 			setState(122);
 			match(Define);
 			setState(123);
-			dataType();
+			match(ID);
 			setState(124);
 			match(Colon);
 			setState(125);
-			match(ID);
+			dataType();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1729,8 +1729,8 @@ public class RetroScriptParser extends Parser {
 		"\36\2\2j\21\3\2\2\2km\5\2\2\2lk\3\2\2\2mp\3\2\2\2nl\3\2\2\2no\3\2\2\2"+
 		"oq\3\2\2\2pn\3\2\2\2qw\5\24\13\2rv\5\"\22\2sv\5&\24\2tv\5(\25\2ur\3\2"+
 		"\2\2us\3\2\2\2ut\3\2\2\2vy\3\2\2\2wu\3\2\2\2wx\3\2\2\2xz\3\2\2\2yw\3\2"+
-		"\2\2z{\5\32\16\2{\23\3\2\2\2|}\7\22\2\2}~\5\b\5\2~\177\7\f\2\2\177\u0080"+
-		"\7\36\2\2\u0080\25\3\2\2\2\u0081\u0083\5\2\2\2\u0082\u0081\3\2\2\2\u0083"+
+		"\2\2z{\5\32\16\2{\23\3\2\2\2|}\7\22\2\2}~\7\36\2\2~\177\7\f\2\2\177\u0080"+
+		"\5\b\5\2\u0080\25\3\2\2\2\u0081\u0083\5\2\2\2\u0082\u0081\3\2\2\2\u0083"+
 		"\u0086\3\2\2\2\u0084\u0082\3\2\2\2\u0084\u0085\3\2\2\2\u0085\u0087\3\2"+
 		"\2\2\u0086\u0084\3\2\2\2\u0087\u0088\7\22\2\2\u0088\u0089\7\r\2\2\u0089"+
 		"\u008a\7\f\2\2\u008a\u008b\7\36\2\2\u008b\u008f\7\23\2\2\u008c\u008e\5"+

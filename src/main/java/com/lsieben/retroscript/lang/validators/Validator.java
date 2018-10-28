@@ -1,6 +1,6 @@
 package com.lsieben.retroscript.lang.validators;
 
-import com.lsieben.retroscript.lang.constructs.LanguageConstruct;
+import com.lsieben.retroscript.lang.constructs.*;
 import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
 import com.lsieben.retroscript.lang.exceptions.vNESWarning;
 import com.lsieben.retroscript.logger.Logger;
@@ -36,5 +36,28 @@ public abstract class Validator<T extends LanguageConstruct> {
 
     public T getConstruct() {
         return construct;
+    }
+
+    /**
+     * Checks if the given datatype is present in any of the modules in this source file, or in any of the modules referenced by the source file.
+     * @param type The datatype to check
+     * @param sourceFile The source file to check.
+     * @return true if the type has been found, false otherwise.
+     */
+    protected boolean checkType(DataType type, SourceFile sourceFile) {
+        for (RetroScriptModule module : sourceFile.getModules()) {
+            if (module.hasDataType(type)) {
+                return true;
+            }
+        }
+
+        for (UsingStatement usingStatement : sourceFile.getUsingStatements()) {
+            for (RetroScriptModule module : CodeBase.getCurrent().getModules(usingStatement.getModuleName())) {
+                if (module.hasDataType(type)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

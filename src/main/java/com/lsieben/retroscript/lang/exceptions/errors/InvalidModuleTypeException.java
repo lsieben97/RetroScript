@@ -2,19 +2,19 @@ package com.lsieben.retroscript.lang.exceptions.errors;
 
 import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
 
-public class ReferenceNotFoundException extends vNESCompilerException {
+public class InvalidModuleTypeException extends vNESCompilerException {
 
-    public ReferenceNotFoundException(String location, String... arguments) {
+    public InvalidModuleTypeException(String location, String... arguments) {
         super(location, arguments);
     }
 
     @Override
     public String getMessage() {
-        return "Could not find $1 '$2'. Did you forget a USE statement?";
+        return "Module $1 is defined with another module type. Location: $2";
     }
 
     @Override
     public String getCode() {
-        return "002";
+        return "003";
     }
 }

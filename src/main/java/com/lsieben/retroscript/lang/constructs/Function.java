@@ -1,6 +1,7 @@
 package com.lsieben.retroscript.lang.constructs;
 
 import com.lsieben.retroscript.lang.constructs.statements.Statement;
+import com.lsieben.retroscript.lang.validators.FunctionValidator;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class Function extends LanguageConstruct {
 
     public Function(ParserRuleContext context) {
         super(context);
+        setValidator(new FunctionValidator(this));
     }
 
     public Entity getEntity() {

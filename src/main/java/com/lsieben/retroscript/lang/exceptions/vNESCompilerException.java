@@ -9,7 +9,7 @@ public class vNESCompilerException extends Exception {
 
     public final String newLine = System.lineSeparator();
 
-    public vNESCompilerException(String... arguments) {
+    public vNESCompilerException(String location, String... arguments) {
         message = getMessage();
         code = getCode();
         for(int i = 1; i < arguments.length + 1; i++) {

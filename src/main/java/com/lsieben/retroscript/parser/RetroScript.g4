@@ -70,7 +70,7 @@ moduleDefinition: Define NativeModifier? 'MODULE' ID;
 useStatement: 'USE' ID;
 
 entity: comment* entityDefinition (function | propertyDefinition | propertyAssignment)* endClause;
-entityDefinition: Define dataType Colon ID;
+entityDefinition: Define ID Colon dataType;
 
 functionDefinition: comment* Define Function Colon ID OpenBracket definitionArgumentSpec* CloseBracket (Colon dataType)?;
 definitionArgumentSpec: ID Colon dataType Comma?;

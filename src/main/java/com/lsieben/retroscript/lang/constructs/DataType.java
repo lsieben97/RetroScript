@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 
 public class DataType extends LanguageConstruct {
     private String name;
+    private final String[] buildInTypes = {"NUMBER", "STRING", "ENTITY", "BOOLEAN"};
     public DataType(ParserRuleContext context) {
         super(context);
     }
@@ -28,5 +29,14 @@ public class DataType extends LanguageConstruct {
             return other.getName().equals(this.name);
         }
         return false;
+    }
+
+    public boolean isId() {
+        for (String buildInType : buildInTypes) {
+            if (buildInType.equals(getName())) {
+                return false;
+            }
+        }
+        return true;
     }
 }

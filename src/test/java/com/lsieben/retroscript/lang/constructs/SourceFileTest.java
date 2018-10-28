@@ -30,4 +30,13 @@ class SourceFileTest {
         assertEquals(sourceFile.getUsingStatements().size(), 1, "SourceFile does not have using statement");
 
     }
+
+    @Test
+    void emptySourceFile() {
+        String code = TestUtils.getFileFromResource("/sourceFile/emptySourceFile.rsf");
+        RetroScriptParser parser = TestUtils.getParserForString(code);
+
+        SourceFile sourceFile = new SourceFileVisitor().visitSourceFile(parser.sourceFile());
+        assertNotNull(sourceFile, "SourceFile was not recognized by parser");
+    }
 }

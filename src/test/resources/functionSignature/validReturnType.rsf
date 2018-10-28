@@ -1,4 +1,7 @@
 DEF MODULE TEST
+    DEF FUNCTION: Test(): TEST
+    END
+
     DEF TEST: ENTITY
     END
 END

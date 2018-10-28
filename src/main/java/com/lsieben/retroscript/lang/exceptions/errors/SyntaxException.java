@@ -5,7 +5,7 @@ import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
 public class SyntaxException extends vNESCompilerException {
 
     public SyntaxException(String location, String... arguments) {
-        super(arguments);
+        super(location, arguments);
     }
     @Override
     public String getMessage() {

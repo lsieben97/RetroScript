@@ -1,5 +1,7 @@
 package com.lsieben.retroscript.lang.constructs;
 
+import com.lsieben.retroscript.lang.exceptions.errors.InvalidModuleTypeException;
+import com.lsieben.retroscript.lang.validators.ModuleValidator;
 import com.lsieben.retroscript.lang.visitors.ModuleVisitor;
 import com.lsieben.retroscript.parser.generated.RetroScriptParser;
 import com.lsieben.retroscript.test_utils.TestUtils;
@@ -7,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RetroScriptModuleTest {
     @Test
@@ -52,4 +55,7 @@ class RetroScriptModuleTest {
         assertEquals(module.getModuleName(), "TEST", "Module Name is not correct.");
         assertEquals(module.getFunctions().size(), 1, "Module has not 1 function.");
     }
+
+
+
 }

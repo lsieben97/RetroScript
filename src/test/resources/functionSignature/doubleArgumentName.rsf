@@ -1,0 +1,7 @@
+DEF MODULE TEST
+    DEF FUNCTION: Test(arg1: TEST, arg1: TEST)
+    END
+
+    DEF TEST: ENTITY
+    END
+END

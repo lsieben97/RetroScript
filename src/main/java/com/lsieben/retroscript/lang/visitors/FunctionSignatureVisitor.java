@@ -28,7 +28,7 @@ public class FunctionSignatureVisitor extends RetroScriptBaseVisitor<FunctionSig
         }
 
         signature.setArguments(arguments);
-
+        signature.setHasArguments(arguments.size() > 0);
         return signature;
     }
 }

@@ -7,6 +7,7 @@ import com.lsieben.retroscript.parser.generated.RetroScriptLexer;
 import com.lsieben.retroscript.parser.generated.RetroScriptParser;
 import org.antlr.v4.runtime.*;
 import org.apache.commons.io.IOUtils;
+import org.omg.CORBA.CODESET_INCOMPATIBLE;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class TestUtils {
         codeBase.setSourceFiles(new ArrayList<>());
         sourceFile.setCodeBase(codeBase);
         codeBase.getSourceFiles().add(sourceFile);
+        CodeBase.setCurrent(codeBase);
         return codeBase;
     }
 

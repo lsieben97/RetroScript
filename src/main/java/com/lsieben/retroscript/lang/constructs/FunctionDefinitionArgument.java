@@ -3,6 +3,8 @@ package com.lsieben.retroscript.lang.constructs;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
+import javax.xml.crypto.Data;
+
 public class FunctionDefinitionArgument extends LanguageConstruct {
     private String name;
     private DataType dataType;
@@ -34,5 +36,15 @@ public class FunctionDefinitionArgument extends LanguageConstruct {
 
     public void setFunctionSignature(FunctionSignature functionSignature) {
         this.functionSignature = functionSignature;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (! (obj instanceof DataType)) {
+            return false;
+        }
+        DataType other = (DataType) obj;
+
+        return other.getName().equals(getName());
     }
 }

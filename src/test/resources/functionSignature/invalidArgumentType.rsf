@@ -1,0 +1,4 @@
+DEF MODULE TEST
+    DEF FUNCTION: Test(arg1: TEST)
+    END
+END
