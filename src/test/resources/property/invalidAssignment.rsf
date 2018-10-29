@@ -1,0 +1,10 @@
+DEF MODULE Test
+    DEF ENTITY TESTENTITY: TEST2
+    mand1 = 1
+    mand1 = 2
+    END
+
+    DEF ENTITY TEST2: ENTITY
+        DEF MANDATORY PROPERTY mand1: NUMBER = 2
+    END
+END

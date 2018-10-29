@@ -1,7 +1,7 @@
 package com.lsieben.retroscript.logger;
 
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
-import com.lsieben.retroscript.lang.exceptions.vNESWarning;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptWarning;
 
 import java.time.LocalDateTime;
 
@@ -22,7 +22,7 @@ public class CliLogger implements LoggingProvider {
     }
 
     @Override
-    public String getWarning(vNESWarning warning) {
+    public String getWarning(RetroScriptWarning warning) {
         return getDateTime() + "\t[WARNING]\t\t" + warning.toString();
     }
 
@@ -32,7 +32,7 @@ public class CliLogger implements LoggingProvider {
     }
 
     @Override
-    public String getError(vNESCompilerException error) {
+    public String getError(RetroScriptCompilerException error) {
         return getDateTime() + "\t[ERROR]\t\t" + error.toString();
     }
     private String getDateTime() {

@@ -2,14 +2,12 @@ package com.lsieben.retroscript.lang.exceptions;
 
 import com.lsieben.retroscript.logger.Message;
 
-public class vNESCompilerException extends Exception {
+public class RetroScriptWarning {
     private String code;
     private String message;
     private String location;
 
-    public final String newLine = System.lineSeparator();
-
-    public vNESCompilerException(String location, String... arguments) {
+    public RetroScriptWarning(String... arguments) {
         message = getMessage();
         code = getCode();
         for(int i = 1; i < arguments.length + 1; i++) {
@@ -25,13 +23,20 @@ public class vNESCompilerException extends Exception {
         return "-1";
     }
 
-
     public Message toMessage() {
         Message msg = new Message(message);
         msg.setSeverity("warning");
         msg.setCode(code);
-        msg.setLocation(location);
         return msg;
+    }
+
+    @Override
+    public String toString() {
+        return "vns" + String.valueOf(code) + ": " + message;
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public void setLocation(String location) {

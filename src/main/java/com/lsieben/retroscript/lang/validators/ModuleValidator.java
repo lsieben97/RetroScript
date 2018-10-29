@@ -1,9 +1,10 @@
 package com.lsieben.retroscript.lang.validators;
 
+import com.lsieben.retroscript.lang.constructs.Entity;
 import com.lsieben.retroscript.lang.constructs.Function;
 import com.lsieben.retroscript.lang.constructs.RetroScriptModule;
 import com.lsieben.retroscript.lang.exceptions.errors.InvalidModuleTypeException;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 
 import java.util.List;
 
@@ -13,13 +14,21 @@ public class ModuleValidator extends Validator<RetroScriptModule> {
     }
 
     @Override
-    public void validate() throws vNESCompilerException {
+    public void validate() throws RetroScriptCompilerException {
         validateModuleType();
 
         validateFunctions();
+
+        validateEntities();
     }
 
-    private void validateFunctions() throws vNESCompilerException {
+    private void validateEntities() throws RetroScriptCompilerException {
+        for (Entity entity : getConstruct().getEntities()) {
+            entity.getValidator().validate();
+        }
+    }
+
+    private void validateFunctions() throws RetroScriptCompilerException {
         for (Function function : getConstruct().getFunctions()) {
             function.getValidator().validate();
         }

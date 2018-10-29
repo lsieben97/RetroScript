@@ -1,14 +1,14 @@
 package com.lsieben.retroscript.lang.exceptions.errors;
 
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 
-public class SyntaxException extends vNESCompilerException {
+public class SyntaxException extends RetroScriptCompilerException {
 
     public SyntaxException(String location, String... arguments) {
         super(location, arguments);
     }
     @Override
-    public String getMessage() {
+    public String getErrorMessage() {
         return "Syntax error: $1";
     }
 

@@ -2,7 +2,7 @@ package com.lsieben.retroscript.lang.validators;
 
 import com.lsieben.retroscript.lang.constructs.UsingStatement;
 import com.lsieben.retroscript.lang.exceptions.errors.ReferenceNotFoundException;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 import com.lsieben.retroscript.lang.exceptions.warnings.DuplicateReferenceWarning;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class UsingStatementValidator extends Validator<UsingStatement> {
     }
 
     @Override
-    public void validate() throws vNESCompilerException {
+    public void validate() throws RetroScriptCompilerException {
         checkModuleName();
 
         checkDuplicateUsingStatement();
@@ -33,7 +33,7 @@ public class UsingStatementValidator extends Validator<UsingStatement> {
         }
     }
 
-    private void checkModuleName() throws vNESCompilerException {
+    private void checkModuleName() throws RetroScriptCompilerException {
         UsingStatement test = getConstruct();
         if (! getConstruct().getSourceFile().getCodeBase().hasModule(getConstruct().getModuleName())) {
             makeError(new ReferenceNotFoundException("MODULE", getConstruct().getModuleName()));

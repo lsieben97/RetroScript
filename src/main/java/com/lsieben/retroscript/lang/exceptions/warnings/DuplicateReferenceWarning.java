@@ -1,8 +1,8 @@
 package com.lsieben.retroscript.lang.exceptions.warnings;
 
-import com.lsieben.retroscript.lang.exceptions.vNESWarning;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptWarning;
 
-public class DuplicateReferenceWarning extends vNESWarning {
+public class DuplicateReferenceWarning extends RetroScriptWarning {
     public DuplicateReferenceWarning(String... arguments) {
         super(arguments);
     }

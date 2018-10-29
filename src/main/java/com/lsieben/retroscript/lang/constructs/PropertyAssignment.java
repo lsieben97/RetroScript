@@ -1,5 +1,6 @@
 package com.lsieben.retroscript.lang.constructs;
 
+import com.lsieben.retroscript.lang.validators.PropertyAssignmentValidator;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 public class PropertyAssignment extends LanguageConstruct {
@@ -11,6 +12,7 @@ public class PropertyAssignment extends LanguageConstruct {
 
     public PropertyAssignment(ParserRuleContext context) {
         super(context);
+        setValidator(new PropertyAssignmentValidator(this));
     }
 
     public Expression getValue() {

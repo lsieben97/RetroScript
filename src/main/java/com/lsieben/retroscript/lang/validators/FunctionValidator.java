@@ -1,7 +1,7 @@
 package com.lsieben.retroscript.lang.validators;
 
 import com.lsieben.retroscript.lang.constructs.Function;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 
 public class FunctionValidator extends Validator<Function> {
     public FunctionValidator(Function construct) {
@@ -9,11 +9,11 @@ public class FunctionValidator extends Validator<Function> {
     }
 
     @Override
-    public void validate() throws vNESCompilerException {
+    public void validate() throws RetroScriptCompilerException {
         validateSignature();
     }
 
-    private void validateSignature() throws vNESCompilerException {
+    private void validateSignature() throws RetroScriptCompilerException {
         getConstruct().getSignature().getValidator().validate();
     }
 }

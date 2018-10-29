@@ -1,14 +1,14 @@
 package com.lsieben.retroscript.lang.exceptions.errors;
 
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 
-public class InternalCompilerException extends vNESCompilerException {
+public class InternalCompilerException extends RetroScriptCompilerException {
 
     public InternalCompilerException(String location, String... arguments) {
         super(location, arguments);
     }
     @Override
-    public String getMessage() {
+    public String getErrorMessage() {
         return "Internal compiler error: $1";
     }
 

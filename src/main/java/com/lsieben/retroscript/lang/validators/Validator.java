@@ -1,9 +1,12 @@
 package com.lsieben.retroscript.lang.validators;
 
 import com.lsieben.retroscript.lang.constructs.*;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
-import com.lsieben.retroscript.lang.exceptions.vNESWarning;
+import com.lsieben.retroscript.lang.exceptions.errors.InternalCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptWarning;
 import com.lsieben.retroscript.logger.Logger;
+
+import java.util.List;
 
 public abstract class Validator<T extends LanguageConstruct> {
     private T construct;
@@ -11,7 +14,7 @@ public abstract class Validator<T extends LanguageConstruct> {
         this.construct = construct;
     }
 
-    public abstract void validate() throws vNESCompilerException;
+    public abstract void validate() throws RetroScriptCompilerException;
 
     public String getSourcePositionOfConstruct(LanguageConstruct construct) {
         return construct.getContext().getStart().getInputStream().getSourceName() +
@@ -19,12 +22,12 @@ public abstract class Validator<T extends LanguageConstruct> {
                 " | column " + String.valueOf(construct.getContext().getStart().getCharPositionInLine());
     }
 
-    public void makeWarning(vNESWarning warning) {
+    public void makeWarning(RetroScriptWarning warning) {
         warning.setLocation(getSourcePositionOfConstruct(getConstruct()));
         Logger.writeWarning(warning.getMessage());
     }
 
-    public void makeError(vNESCompilerException error) throws vNESCompilerException {
+    public void makeError(RetroScriptCompilerException error) throws RetroScriptCompilerException {
         error.setLocation(getSourcePositionOfConstruct(getConstruct()));
         throw error;
     }
@@ -59,5 +62,44 @@ public abstract class Validator<T extends LanguageConstruct> {
             }
         }
         return false;
+    }
+
+    /**
+     * Check if the entity name exists more then 1 time within it's declaring module.
+     * @param entity The entity to check.
+     * @return true if it's found multiple times, false otherwise.
+     */
+    public boolean checkEntityName(Entity entity) {
+        List<RetroScriptModule> modules = CodeBase.getCurrent().getModules(entity.getModule().getModuleName());
+        int count = 0;
+        for (RetroScriptModule module : modules) {
+            for (Entity moduleEntity : module.getEntities()) {
+                if (moduleEntity.getName().equals(entity.getName())) {
+                    count++;
+                }
+            }
+        }
+        return count > 1;
+    }
+
+    public Entity getEntity(String name, SourceFile sourceFile) throws RetroScriptCompilerException {
+        for (RetroScriptModule module : sourceFile.getModules()) {
+            for (Entity entity : module.getEntities()) {
+                if (entity.getName().equals(name)) {
+                    return entity;
+                }
+            }
+        }
+
+        for (UsingStatement usingStatement : sourceFile.getUsingStatements()) {
+            for (RetroScriptModule module : CodeBase.getCurrent().getModules(usingStatement.getModuleName())) {
+                for (Entity entity : module.getEntities()) {
+                    if (entity.getName().equals(name)) {
+                        return entity;
+                    }
+                }
+            }
+        }
+        throw new InternalCompilerException("Validator.getEntity", "Could not find entity instance for name '" + name + "'.");
     }
 }

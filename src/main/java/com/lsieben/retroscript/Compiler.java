@@ -1,7 +1,7 @@
 package com.lsieben.retroscript;
 
 import com.lsieben.retroscript.lang.constructs.CodeBase;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 import com.lsieben.retroscript.logger.Logger;
 import com.lsieben.retroscript.models.VnesProject;
 import com.lsieben.retroscript.parser.Parser;
@@ -44,7 +44,7 @@ public class Compiler {
                     try {
                         codeBase.validate();
                     }
-                    catch (vNESCompilerException ex) {
+                    catch (RetroScriptCompilerException ex) {
                         Logger.writeError(ex);
                     }
 

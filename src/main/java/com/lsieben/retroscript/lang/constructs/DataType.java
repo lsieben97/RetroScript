@@ -4,7 +4,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 
 public class DataType extends LanguageConstruct {
     private String name;
-    private final String[] buildInTypes = {"NUMBER", "STRING", "ENTITY", "BOOLEAN"};
+    private final String[] buildInTypes = {"NUMBER", "STRING", "BOOLEAN"};
     public DataType(ParserRuleContext context) {
         super(context);
     }

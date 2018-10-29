@@ -1,7 +1,7 @@
 package com.lsieben.retroscript.lang.constructs;
 
 import com.lsieben.retroscript.lang.exceptions.errors.ReferenceNotFoundException;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 import com.lsieben.retroscript.lang.exceptions.warnings.DuplicateReferenceWarning;
 import com.lsieben.retroscript.lang.validators.UsingStatementValidator;
 import com.lsieben.retroscript.lang.visitors.UsingStatementVisitor;
@@ -26,7 +26,7 @@ class UsingStatementTest {
     }
 
     @Test
-    void validUsingStatement() throws vNESCompilerException {
+    void validUsingStatement() throws RetroScriptCompilerException {
         CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/validUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 
@@ -44,7 +44,7 @@ class UsingStatementTest {
     }
 
     @Test()
-    void duplicateUsingStatement() throws vNESCompilerException {
+    void duplicateUsingStatement() throws RetroScriptCompilerException {
         CodeBase codeBase = TestUtils.getCodeBaseForFile("/usingStatement/duplicateUsingStatement.rsf");
         UsingStatement usingStatement = codeBase.getSourceFiles().get(0).getUsingStatements().get(0);
 

@@ -1,8 +1,8 @@
 package com.lsieben.retroscript.logger;
 
 import com.google.gson.Gson;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
-import com.lsieben.retroscript.lang.exceptions.vNESWarning;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptWarning;
 
 public class JsonLogger implements LoggingProvider {
 
@@ -24,7 +24,7 @@ public class JsonLogger implements LoggingProvider {
     }
 
     @Override
-    public String getWarning(vNESWarning warning) {
+    public String getWarning(RetroScriptWarning warning) {
         return new Gson().toJson(warning.toMessage());
     }
 
@@ -36,7 +36,7 @@ public class JsonLogger implements LoggingProvider {
     }
 
     @Override
-    public String getError(vNESCompilerException error) {
+    public String getError(RetroScriptCompilerException error) {
         return new Gson().toJson(error.toMessage());
     }
 }

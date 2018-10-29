@@ -5,7 +5,7 @@ import com.lsieben.retroscript.lang.constructs.FunctionDefinitionArgument;
 import com.lsieben.retroscript.lang.constructs.FunctionSignature;
 import com.lsieben.retroscript.lang.exceptions.errors.InvalidNameException;
 import com.lsieben.retroscript.lang.exceptions.errors.ReferenceNotFoundException;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class FunctionSignatureValidator extends Validator<FunctionSignature> {
     }
 
     @Override
-    public void validate() throws vNESCompilerException {
+    public void validate() throws RetroScriptCompilerException {
         validateName();
         validateReturnType();
         validateArguments();

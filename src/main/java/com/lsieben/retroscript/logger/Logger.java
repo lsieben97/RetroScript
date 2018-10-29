@@ -3,8 +3,8 @@ package com.lsieben.retroscript.logger;
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
 import com.lsieben.retroscript.Compiler;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
-import com.lsieben.retroscript.lang.exceptions.vNESWarning;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptWarning;
 
 /**
  * Logger class to write stuff to the console.
@@ -55,7 +55,7 @@ public class Logger {
      * Write a debug message to the console.
      * @param message The message to write.
      */
-    public static void writeWarning(vNESWarning message) {
+    public static void writeWarning(RetroScriptWarning message) {
         cp.println(provider.getWarning(message));
     }
 
@@ -82,7 +82,7 @@ public class Logger {
      * Write a debug message to the console and exit.
      * @param message The message to write.
      */
-    public static void writeError(vNESCompilerException message, boolean exit) {
+    public static void writeError(RetroScriptCompilerException message, boolean exit) {
         cp.debugPrintln(provider.getError(message));
         if (exit) {
             System.exit(-1);
@@ -93,7 +93,7 @@ public class Logger {
      * Write a error message to the console and exit.
      * @param message The message to write.
      */
-    public static void writeError(vNESCompilerException message) {
+    public static void writeError(RetroScriptCompilerException message) {
         writeError(message, true);
     }
 

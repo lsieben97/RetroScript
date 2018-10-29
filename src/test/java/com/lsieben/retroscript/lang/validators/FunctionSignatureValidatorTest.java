@@ -4,7 +4,7 @@ import com.lsieben.retroscript.lang.constructs.CodeBase;
 import com.lsieben.retroscript.lang.constructs.FunctionSignature;
 import com.lsieben.retroscript.lang.exceptions.errors.InvalidNameException;
 import com.lsieben.retroscript.lang.exceptions.errors.ReferenceNotFoundException;
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 import com.lsieben.retroscript.test_utils.TestUtils;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FunctionSignatureValidatorTest {
 
     @Test
-    void validFunctionSignature() throws vNESCompilerException {
+    void validFunctionSignature() throws RetroScriptCompilerException {
         CodeBase codebase = TestUtils.getCodeBaseForFile("/functionSignature/validFunctionSignature.rsf");
 
 
@@ -25,7 +25,7 @@ class FunctionSignatureValidatorTest {
     }
 
     @Test
-    void validReturnType() throws vNESCompilerException {
+    void validReturnType() throws RetroScriptCompilerException {
         CodeBase codebase = TestUtils.getCodeBaseForFile("/functionSignature/validReturnType.rsf");
 
 
@@ -36,7 +36,7 @@ class FunctionSignatureValidatorTest {
     }
 
     @Test
-    void validArguments() throws vNESCompilerException {
+    void validArguments() throws RetroScriptCompilerException {
         CodeBase codebase = TestUtils.getCodeBaseForFile("/functionSignature/validArguments.rsf");
 
 
@@ -47,7 +47,7 @@ class FunctionSignatureValidatorTest {
     }
 
     @Test
-    void validFunctionSignatureWithBuildInType() throws vNESCompilerException {
+    void validFunctionSignatureWithBuildInType() throws RetroScriptCompilerException {
         CodeBase codebase = TestUtils.getCodeBaseForFile("/functionSignature/validFunctionSignatureWithBuildInType.rsf");
 
 

@@ -1,6 +1,6 @@
 package com.lsieben.retroscript.lang.constructs;
 
-import com.lsieben.retroscript.lang.exceptions.vNESCompilerException;
+import com.lsieben.retroscript.lang.exceptions.RetroScriptCompilerException;
 import com.lsieben.retroscript.models.VnesProject;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class CodeBase {
         this.project = project;
     }
 
-    public void validate() throws vNESCompilerException {
+    public void validate() throws RetroScriptCompilerException {
         for (SourceFile sourceFile : sourceFiles) {
             sourceFile.getValidator().validate();
         }
